@@ -1,0 +1,470 @@
+# Registro declarativo de fontes. Validado por src/betscerveja/registry.py.
+# Campos obrigatórios: id, titulo, publicador, dominio, tipo, adapter, licenca,
+# e_oficial, tier_confiabilidade.
+# PDFs no lake exigem vintage_publicacao e landing_filename.
+#
+# tier_confiabilidade:
+#   A = dado oficial primário
+#   B = pesquisa / think tank / preprint sem conflito material
+#   C = jornalismo, indústria, amostra de fornecedor ou conflito de interesse
+#
+# status_acervo:
+#   no_lake   = arquivo já está em data/00_landing
+#   pendente  = precisamos coletar (pergunta externa)
+#   planejada = entra na Fase 1 via API, ainda sem bytes
+
+sources:
+  # --- Cerveja: Anuários MAPA (ano no nome original é REFERÊNCIA, não publicação) ---
+  - id: anuario_cerveja_ref2021_pub2022
+    titulo: Anuário da Cerveja 2021
+    publicador: MAPA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/publicacoes/anuario-da-cerveja-2021
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2021
+    vintage_publicacao: 2022
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: anuario_cerveja_ref2021_pub2022.pdf
+    notas: Sem volume de produção. Útil para estabelecimentos, registros e comércio exterior em kg.
+
+  - id: anuario_cerveja_ref2022_pub2023
+    titulo: Anuário da Cerveja 2022
+    publicador: MAPA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/publicacoes/anuario-da-cerveja-2022
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2022
+    vintage_publicacao: 2023
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: anuario_cerveja_ref2022_pub2023.pdf
+    notas: Sem volume de produção. Comércio exterior ainda em kg.
+
+  - id: anuario_cerveja_ref2023_pub2024
+    titulo: Anuário da Cerveja ano referência 2023
+    publicador: MAPA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/publicacoes/anuario-da-cerveja-2024
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2023
+    vintage_publicacao: 2024
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: anuario_cerveja_ref2023_pub2024.pdf
+    notas: Primeira edição com Declaração Anual de Produção e Estoques. Produção 15.361.344.112,77 L.
+
+  - id: anuario_cerveja_ref2024_pub2025
+    titulo: Anuário da Cerveja ano referência 2024
+    publicador: MAPA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/publicacoes/anuario-da-cerveja-2025
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2024
+    vintage_publicacao: 2025
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: anuario_cerveja_ref2024_pub2025.pdf
+    notas: Produção originalmente publicada 15.344.065.267,36 L. Par do caso de divergência de vintage.
+
+  - id: anuario_cerveja_ref2025_pub2026
+    titulo: Anuário da Cerveja ano referência 2025
+    publicador: MAPA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/agricultura/pt-br/assuntos/inspecao/produtos-vegetal/publicacoes/anuario-da-cerveja-2026
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2025
+    vintage_publicacao: 2026
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: anuario_cerveja_ref2025_pub2026.pdf
+    notas: Retifica 2024 para 17.210.754.610,75 L (p. 7 e p. 51). Produção 2025 15.688.083.191,69 L.
+
+  - id: cisa_panorama_alcool_saude_2023
+    titulo: "Álcool e a Saúde dos Brasileiros: Panorama 2023"
+    publicador: CISA
+    dominio: cerveja
+    tipo: pdf
+    adapter: http_file
+    url: https://cisa.org.br/pesquisa/levantamentos-e-publicacoes
+    licenca: verificar no documento
+    ano_referencia: 2023
+    vintage_publicacao: 2023
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    conflito_de_interesse: Financiado por AmBev e Heineken. Fonte sobre álcool e saúde bancada por cervejarias.
+    landing_filename: cisa_panorama_alcool_saude_2023.pdf
+
+  - id: araujo_tcc_cerveja_ufrgs_2025
+    titulo: "Cerveja: hábitos de consumo que traduzem uma paixão nacional"
+    publicador: UFRGS / Joanna Ribas Araujo
+    dominio: cerveja
+    tipo: pdf
+    adapter: manual
+    url: null
+    licenca: trabalho acadêmico; citar a autora
+    ano_referencia: 2025
+    vintage_publicacao: 2025
+    e_oficial: false
+    tier_confiabilidade: B
+    status_acervo: no_lake
+    landing_filename: araujo_tcc_cerveja_habitos_consumo_ufrgs_2025.pdf
+    notas: TCC. Contexto qualitativo, não série oficial.
+
+  # --- Apostas: oficiais e pesquisa ---
+  - id: bcb_ee119_apostas_2024
+    titulo: Análise técnica sobre o mercado de apostas online no Brasil e o perfil dos apostadores
+    publicador: Banco Central do Brasil
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: https://www.bcb.gov.br/publicacoes/estudos-especiais
+    licenca: dados públicos (bcb.gov.br)
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: bcb_ee119_apostas_online_2024.pdf
+    notas: EE119 / Nota Técnica 513/2024-BCB/SECRE. Recorte de agosto de 2024. Pix para casas de apostas.
+
+  - id: fundaj_nt39_pce_2024
+    titulo: Como as Apostas Online Estão Comprometendo o Poder de Compra das Famílias no Bolsa Família
+    publicador: Fundaj
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: https://www.fundaj.gov.br
+    licenca: verificar no documento
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: no_lake
+    landing_filename: fundaj_nt39_pce_apostas_bolsa_familia.pdf
+    notas: Nota Técnica 39. PCE e mediana de R$ 100 vs Bolsa Família.
+
+  - id: ieps_dossie_bets_saude
+    titulo: A saúde dos brasileiros em jogo
+    publicador: IEPS
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: https://ieps.org.br
+    licenca: verificar no documento
+    ano_referencia: 2025
+    vintage_publicacao: 2025
+    e_oficial: false
+    tier_confiabilidade: B
+    status_acervo: no_lake
+    landing_filename: ieps_dossie_bets_saude_brasileiros_em_jogo.pdf
+    notas: Custo social estimado e emprego formal das bets.
+
+  - id: strategy_impacto_apostas_consumo_2024
+    titulo: O impacto das apostas esportivas no consumo
+    publicador: Strategy& / Public Strategy
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: null
+    licenca: relatório privado reproduzido; citar a fonte
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: public_strategy_impacto_apostas_consumo_2024.pdf
+    notas: Survey Locomotiva nas classes C/D/E. Eixo do projeto (de onde saiu o dinheiro).
+
+  - id: amaro_bets_publicidade_intercom_2024
+    titulo: "Apostas esportivas no Brasil: breve análise da publicidade de bets"
+    publicador: Intercom / Fausto Amaro (UERJ)
+    dominio: apostas
+    tipo: pdf
+    adapter: manual
+    url: null
+    licenca: trabalho acadêmico; citar o autor
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: B
+    status_acervo: no_lake
+    landing_filename: amaro_apostas_esportivas_publicidade_intercom_2024.pdf
+
+  - id: elkhatib_bets_universitarios_2024
+    titulo: Diversão ou Armadilha? Apostas esportivas entre universitários (TCP)
+    publicador: SciELO Preprints / Ahmed Sameer El Khatib
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: https://doi.org/10.1590/SciELOPreprints.10133
+    licenca: preprint SciELO
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: B
+    status_acervo: no_lake
+    landing_filename: elkhatib_diversao_ou_armadilha_bets_universitarios_2024.pdf
+
+  - id: lca_ibjr_anjl_panorama_apostas_2025
+    titulo: Panorama do mercado de apostas de quota fixa
+    publicador: LCA+Cruz / IBJR / ANJL
+    dominio: apostas
+    tipo: pdf
+    adapter: manual
+    url: null
+    licenca: relatório de associações do setor; citar LCA+Cruz, IBJR e ANJL
+    ano_referencia: 2025
+    vintage_publicacao: 2025
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    conflito_de_interesse: IBJR e ANJL representam operadoras de apostas. Não é dado da SPA.
+    landing_filename: lca_ibjr_anjl_panorama_quota_fixa_nov2025.pdf
+    notas: Novembro de 2025. Emprego, capital social, tributos e patrocínio. Não substitui o Panorama oficial da SPA (GGR).
+
+  - id: spa_panorama_apostas_2025
+    titulo: Panorama do mercado de apostas (SPA/MF)
+    publicador: Secretaria de Prêmios e Apostas / Ministério da Fazenda
+    dominio: apostas
+    tipo: pdf
+    adapter: http_file
+    url: https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas
+    licenca: dados públicos (gov.br)
+    ano_referencia: 2025
+    vintage_publicacao: 2025
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: pendente
+    notas: NÃO está no acervo. GGR, apostadores e destinações legais. Coleta manual necessária.
+
+  # --- Web (jornalismo; citar a fonte primária quando o texto aponta Euromonitor/Nielsen/Klavi) ---
+  - id: web_senado_mercado_global_bets_2026
+    titulo: Brasil é o quinto maior mercado global de apostas
+    publicador: Rádio Senado
+    dominio: apostas
+    tipo: html
+    adapter: http_page
+    url: https://www12.senado.leg.br/radio/1/noticia/2026/04/01/brasil-e-o-quinto-maior-mercado-global-de-apostas
+    licenca: conteúdo jornalístico; citar a Rádio Senado
+    vintage_publicacao: 2026
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: radio_senado_quinto_mercado_global_bets_2026.html
+
+  - id: web_valor_klavi_apostadores_2026
+    titulo: Número de apostadores dobra no Brasil em um ano, e parte já corta gastos essenciais
+    publicador: Valor Investe
+    dominio: apostas
+    tipo: html
+    adapter: http_page
+    url: https://valorinveste.globo.com/objetivo/organize-as-contas/noticia/2026/01/20/numero-de-apostadores-dobra-no-brasil-em-um-ano-e-parte-ja-corta-gastos-essenciais.ghtml
+    licenca: conteúdo jornalístico; citar Valor Investe e Klavi
+    vintage_publicacao: 2026
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: valor_investe_apostadores_dobram_klavi_2026.html
+    notas: Recorta Klavi/Open Finance. Fonte primária dos números é a Klavi, não o jornal.
+
+  - id: web_klavi_placar_bets
+    titulo: Placar da Copa — Apostas e saúde financeira
+    publicador: Klavi
+    dominio: apostas
+    tipo: html
+    adapter: http_page
+    url: https://klavi.ai/placar-das-bets
+    licenca: conteúdo da empresa; citar Klavi
+    vintage_publicacao: 2026
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    conflito_de_interesse: Fornecedor de Open Finance. Amostra própria, não censo.
+    landing_filename: klavi_placar_das_bets.html
+
+  - id: web_g1_propaganda_bets_2025
+    titulo: Propaganda de dinheiro fácil em bets cresce
+    publicador: G1
+    dominio: apostas
+    tipo: html
+    adapter: http_page
+    url: https://g1.globo.com/ce/ceara/noticia/2025/12/18/propaganda-que-promete-dinheiro-facil-com-bets-cresce-no-brasil.ghtml
+    licenca: conteúdo jornalístico; citar G1
+    vintage_publicacao: 2025
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: g1_propaganda_dinheiro_facil_bets_2025.html
+
+  - id: web_catalisi_consumo_2022
+    titulo: Brasil consumiu quase 16 bilhões de litros em 2022
+    publicador: Catalisi
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://catalisi.com.br/brasil-consumiu-quase-16-bilhoes-de-litros-em-2022-um-novo-recorde/
+    licenca: conteúdo jornalístico; citar Catalisi e a fonte primária citada
+    ano_referencia: 2022
+    vintage_publicacao: 2023
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: catalisi_consumo_cerveja_2022.html
+    notas: Fora da janela analítica 2023+. Manter no lake só como contexto e para qa_divergencias.
+
+  - id: web_istoe_sem_alcool
+    titulo: Brasil só perde para a Alemanha no consumo de cerveja sem álcool
+    publicador: IstoÉ Dinheiro
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://istoedinheiro.com.br/mercado-cerveja-sem-alcool-brasil
+    licenca: conteúdo jornalístico; citar IstoÉ e Euromonitor se for a fonte dos números
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: istoe_cerveja_sem_alcool.html
+
+  - id: web_exame_zero_885mi
+    titulo: Brasil vai consumir 885 milhões de litros de cerveja zero
+    publicador: Exame
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://exame.com/negocios/brasil-vai-consumir-885-milhoes-de-litros-de-cerveja-zero-e-disputa-entre-gigantes-acelera/
+    licenca: conteúdo jornalístico; citar Exame e a fonte primária citada
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: exame_cerveja_zero_885mi.html
+
+  - id: web_g1_consumo_cerveja_2024
+    titulo: Consumo de cerveja deve voltar a crescer no Brasil em 2024
+    publicador: G1
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://g1.globo.com/economia/noticia/2024/11/08/consumo-de-cerveja-deve-voltar-a-crescer-no-brasil-em-2024-mas-bebida-deve-ficar-mais-cara.ghtml
+    licenca: conteúdo jornalístico; citar G1 e a fonte primária citada
+    ano_referencia: 2024
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: g1_consumo_cerveja_2024.html
+
+  - id: web_central_varejo_sem_alcool
+    titulo: Consumo de cervejas sem álcool e menos calóricas cresce
+    publicador: Central do Varejo
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://centraldovarejo.com.br/consumo-de-cervejas-sem-alcool-e-menos-caloricas-cresce-no-brasil-aponta-estudo/
+    licenca: conteúdo jornalístico; citar Central do Varejo e a fonte primária citada
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: central_varejo_cervejas_sem_alcool.html
+
+  - id: web_cnn_ifood_copa
+    titulo: Estreia da Seleção Brasileira elevou venda de bebidas em 63% no iFood
+    publicador: CNN Brasil
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://www.cnnbrasil.com.br/economia/money/macroeconomia/estreia-da-selecao-brasileira-elevou-venda-de-bebidas-em-63-no-ifood/
+    licenca: conteúdo jornalístico; citar CNN e iFood
+    vintage_publicacao: 2024
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: cnn_ifood_estreia_selecao_bebidas.html
+    notas: Evento pontual. Não entra no modelo; só contexto.
+
+  - id: web_catalisi_vendas_2021
+    titulo: Vendas de cerveja alcançam 14,3 bilhões de litros no Brasil em 2021
+    publicador: Catalisi
+    dominio: cerveja
+    tipo: html
+    adapter: http_page
+    url: https://catalisi.com.br/vendas-de-cerveja-brasil-em-2021/
+    licenca: conteúdo jornalístico; citar Catalisi e a fonte primária citada
+    ano_referencia: 2021
+    vintage_publicacao: 2022
+    e_oficial: false
+    tier_confiabilidade: C
+    status_acervo: no_lake
+    landing_filename: catalisi_vendas_cerveja_2021.html
+    notas: Fora da janela analítica 2023+. Manter no lake só como contexto.
+
+  # --- APIs (Fase 1) ---
+  - id: sidra_8885_pim_bebidas
+    titulo: PIM-PF produção industrial por atividade (bebidas alcoólicas e não alcoólicas)
+    publicador: IBGE / SIDRA
+    dominio: cerveja
+    tipo: api
+    adapter: api_sidra
+    url: https://sidra.ibge.gov.br/tabela/8885
+    licenca: dados públicos (IBGE)
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: planejada
+    notas: Verificar se cerveja sem álcool cai em 11.1 ou 11.2 ANTES de modelar. Bloqueante da Fase 2.
+
+  - id: sidra_8888_pim_geral
+    titulo: PIM-PF indicadores da produção industrial
+    publicador: IBGE / SIDRA
+    dominio: cerveja
+    tipo: api
+    adapter: api_sidra
+    url: https://sidra.ibge.gov.br/tabela/8888
+    licenca: dados públicos (IBGE)
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: planejada
+
+  - id: sidra_7060_ipca
+    titulo: IPCA por grupos e itens (cerveja e bebidas)
+    publicador: IBGE / SIDRA
+    dominio: macro
+    tipo: api
+    adapter: api_sidra
+    url: https://sidra.ibge.gov.br/tabela/7060
+    licenca: dados públicos (IBGE)
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: planejada
+    notas: Regressor exógeno do SARIMAX. Confirmar o código do item cerveja na Fase 1.
+
+  - id: bcb_sgs_rendimento_real
+    titulo: Rendimento médio real (PNAD Contínua via SGS)
+    publicador: Banco Central do Brasil / SGS
+    dominio: macro
+    tipo: api
+    adapter: api_bcb
+    url: https://www.bcb.gov.br/estatisticas
+    licenca: dados públicos (bcb.gov.br)
+    e_oficial: true
+    tier_confiabilidade: A
+    status_acervo: planejada
+    notas: Confirmar o código da série SGS antes de ingestão. Candidata usual é rendimento médio real efetivo.

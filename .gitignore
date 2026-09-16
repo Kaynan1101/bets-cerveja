@@ -1,0 +1,47 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Lake (versionado por DVC depois; sample e READMEs entram no Git)
+data/00_landing/*
+data/01_raw/*
+!data/01_raw/README.md
+data/bet/
+data/cerveja/
+*.duckdb
+*.duckdb.wal
+warehouse/
+
+# dbt
+transform/target/
+transform/dbt_packages/
+transform/logs/
+transform/.user.yml
+
+# Orquestração / notebooks
+orchestration/.dagster/
+**/.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+
+# Power BI temporários
+*.pbix.bak
+*.rdl.data

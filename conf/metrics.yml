@@ -1,0 +1,58 @@
+# Catálogo de métricas canônicas. Vira seed do dbt na Fase 3.
+# Não misturar fluxo bruto, GGR e destinações legais.
+
+metrics:
+  - id: producao_cerveja_litros
+    unidade: litro
+    periodicidade: anual
+    descricao: Volume declarado de produção de cerveja (MAPA).
+    distingue_de: []
+
+  - id: producao_bebidas_alcoolicas_indice
+    unidade: indice
+    periodicidade: mensal
+    descricao: PIM-PF SIDRA 8885, categoria bebidas alcoólicas.
+    distingue_de: [producao_cerveja_litros]
+
+  - id: ipca_cerveja
+    unidade: indice
+    periodicidade: mensal
+    descricao: Item cerveja no IPCA (SIDRA 7060).
+
+  - id: rendimento_real
+    unidade: brl_constante
+    periodicidade: mensal
+    descricao: Rendimento médio real. Código SGS a confirmar.
+
+  - id: fluxo_bruto_apostado
+    unidade: brl
+    periodicidade: mensal
+    descricao: Valor enviado a casas de apostas (Pix). Ordem de R$ 20 bi/mês no EE119.
+    distingue_de: [ggr, destinacoes_legais]
+
+  - id: ggr
+    unidade: brl
+    periodicidade: mensal
+    descricao: Gross Gaming Revenue (receita líquida das operadoras).
+    distingue_de: [fluxo_bruto_apostado, destinacoes_legais]
+
+  - id: destinacoes_legais
+    unidade: brl
+    periodicidade: mensal
+    descricao: 12% do GGR destinados por lei. Não é o tamanho do mercado.
+    distingue_de: [fluxo_bruto_apostado, ggr]
+
+  - id: apostadores
+    unidade: pessoas
+    periodicidade: irregular
+    descricao: Contagem de apostadores. Definição muda entre SPA, LAI e Klavi.
+
+  - id: participacao_orcamento_apostas
+    unidade: percentual
+    periodicidade: irregular
+    descricao: Participação das apostas no orçamento familiar, por classe.
+
+  - id: substituicao_categoria_despesa
+    unidade: percentual
+    periodicidade: irregular
+    descricao: Percentual de apostadores que dizem ter tirado o dinheiro de uma categoria.
