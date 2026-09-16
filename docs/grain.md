@@ -18,7 +18,9 @@ Fatos de periodicidade maior que dia apontam para o primeiro dia do período em 
 
 `dim_fonte` sem `vintage_publicacao` torna impossível representar as duas produções de 2024.
 
-`dim_metrica` precisa separar `fluxo_bruto_apostado`, `ggr` e `destinacoes_legais`. Confundi-las é o erro mais comum do jornalismo do tema.
+`dim_metrica` precisa separar `fluxo_bruto_apostado`, `ggr` e `destinacoes_legais`. GGR oficial da SPA está fora de escopo; no lake o fluxo oficial é o Pix do EE119.
+
+Números esparsos de apostas (EE119, IBJR/ANJL, IEPS, Locomotiva, Klavi) entram em `fct_indicador_declarado`, não em fato "oficial" próprio.
 
 ## Fatos (`marts_core`)
 
@@ -28,7 +30,6 @@ Fatos de periodicidade maior que dia apontam para o primeiro dia do período em 
 | `fct_indicador_declarado` | fonte × métrica × período × geografia × recorte | inclui `pagina` e `citacao_textual` |
 | `fct_substituicao_declarada` | fonte × categoria de despesa × recorte | eixo do projeto |
 | `fct_mercado_cerveja_anual` | ano de referência × vintage × UF | **vintage na chave** |
-| `fct_apostas_oficial` | período × métrica | Panorama SPA (ainda pendente) |
 
 ## Analytics
 

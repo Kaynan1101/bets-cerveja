@@ -14,10 +14,11 @@ uv run betscerveja sources validate
 | --- | --- |
 | `ano_referencia` vs `vintage_publicacao` | Sem os dois, a revisão de 2024 vira um único número errado |
 | `tier_confiabilidade` A/B/C | Survey e Klavi não pesam igual ao MAPA |
-| `e_oficial` | Destaca SIDRA/MAPA/BCB/SPA |
-| `conflito_de_interesse` | CISA é financiado por AmBev e Heineken; Klavi vende Open Finance |
-| `status_acervo` | `no_lake` / `pendente` / `planejada` |
+| `e_oficial` | Destaca SIDRA/MAPA/BCB |
+| `conflito_de_interesse` | CISA é financiado por AmBev e Heineken; IBJR/ANJL representam operadoras |
+| `status_acervo` | `no_lake` / `pendente` / `planejada` / `fora_de_escopo` |
 | `landing_filename` | Nome canônico no lake, sem mojibake |
+| `api_path` | Caminho da API SIDRA/SGS na ingestão |
 
 ## Como o Anuário foi renomeado
 
@@ -25,7 +26,10 @@ O arquivo original `anuario-da-cerveja-2025.pdf` é o Anuário **2026**, dados d
 
 `anuario_cerveja_ref2025_pub2026.pdf`
 
-## Pendências de coleta
+## Fora de escopo
 
-- `spa_panorama_apostas_2025` — oficial (GGR, apostadores, destinações). **Ainda não está no acervo.** O PDF `LCA_Cruz_IBJR_ANJL_Panorama-2025-Setor.pdf` é o panorama LCA+Cruz/IBJR/ANJL (`lca_ibjr_anjl_panorama_apostas_2025`), não substitui a SPA.
-- APIs SIDRA 8885/8888/7060 e BCB SGS — Fase 1, sem conta (endpoints públicos).
+- `spa_panorama_apostas_2025` — ADR 0004. GGR oficial não entra.
+
+## Ainda planejadas (API)
+
+SIDRA 8885/8888/7060 e BCB SGS — etapa 2, endpoints públicos.

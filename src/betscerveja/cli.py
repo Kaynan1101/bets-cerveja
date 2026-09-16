@@ -1,4 +1,4 @@
-"""CLI Typer. Ingestão entra na Fase 1; por enquanto só o registro de fontes."""
+"""CLI: registro de fontes, ingestão e extração."""
 
 from __future__ import annotations
 
@@ -8,6 +8,8 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from betscerveja.extract.runner import extract_source
+from betscerveja.ingest.runner import ingest_source
 from betscerveja.registry import StatusAcervo, load_registry
 
 app = typer.Typer(no_args_is_help=True, help="Pipeline bets-cerveja.")
@@ -58,7 +60,35 @@ def sources_validate() -> None:
     no_lake = len(registry.by_status(StatusAcervo.NO_LAKE))
     pendente = len(registry.by_status(StatusAcervo.PENDENTE))
     planejada = len(registry.by_status(StatusAcervo.PLANEJADA))
+    fora = len(registry.by_status(StatusAcervo.FORA_DE_ESCOPO))
     console.print(
         f"{len(registry.sources)} fontes válidas "
-        f"({no_lake} no lake, {pendente} pendentes, {planejada} planejadas)."
+        f"({no_lake} no lake, {pendente} pendentes, {planejada} planejadas, "
+        f"{fora} fora de escopo)."
     )
+
+
+@app.command("ingest")
+def ingest(
+    source: Annotated[str, typer.Option(help="id em conf/sources.yml")],
+) -> None:
+    registry = load_registry()
+    try:
+        item = registry.get(source)
+    except KeyError as exc:
+        raise typer.BadParameter(f"fonte não encontrada: {source}") from exc
+    record = ingest_source(item)
+    console.print(record)
+
+
+@app.command("extract")
+def extract(
+    source: Annotated[str, typer.Option(help="id em conf/sources.yml")],
+) -> None:
+    registry = load_registry()
+    try:
+        item = registry.get(source)
+    except KeyError as exc:
+        raise typer.BadParameter(f"fonte não encontrada: {source}") from exc
+    dest = extract_source(item)
+    console.print(f"escreveu {dest}")

@@ -19,7 +19,6 @@ build/
 # Lake (bytes no DVC; sample e READMEs no Git)
 data/00_landing/*
 data/01_raw/*
-!data/01_raw/README.md
 !data/00_landing.dvc
 !data/01_raw.dvc
 

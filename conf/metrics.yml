@@ -33,7 +33,7 @@ metrics:
   - id: ggr
     unidade: brl
     periodicidade: mensal
-    descricao: Gross Gaming Revenue (receita líquida das operadoras).
+    descricao: Gross Gaming Revenue. Sem fonte no lake; métrica reservada, não materializar.
     distingue_de: [fluxo_bruto_apostado, destinacoes_legais]
 
   - id: destinacoes_legais
@@ -45,7 +45,7 @@ metrics:
   - id: apostadores
     unidade: pessoas
     periodicidade: irregular
-    descricao: Contagem de apostadores. Definição muda entre SPA, LAI e Klavi.
+    descricao: Contagem de apostadores. No lake: amostra Klavi, não censo.
 
   - id: participacao_orcamento_apostas
     unidade: percentual

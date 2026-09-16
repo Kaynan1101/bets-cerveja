@@ -42,6 +42,7 @@ class StatusAcervo(StrEnum):
     NO_LAKE = "no_lake"
     PENDENTE = "pendente"
     PLANEJADA = "planejada"
+    FORA_DE_ESCOPO = "fora_de_escopo"
 
 
 class Source(BaseModel):
@@ -60,6 +61,7 @@ class Source(BaseModel):
     status_acervo: StatusAcervo = StatusAcervo.NO_LAKE
     conflito_de_interesse: str | None = None
     landing_filename: str | None = None
+    api_path: str | None = None
     notas: str | None = None
 
     @field_validator("id")

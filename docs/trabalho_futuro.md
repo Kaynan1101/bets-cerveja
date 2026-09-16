@@ -22,7 +22,9 @@ Fica como hipótese rival no artigo (Scanntech, via jornalismo). Entrar no SARIM
 
 Depende da verificação bloqueante da SIDRA 8885. Se 11.1 excluir zero álcool, aí sim vale um segundo modelo — ainda não.
 
-## Looker Studio espelho e DOI Zenodo
+## Panorama da SPA
+
+Fora de escopo. Ver [ADR 0004](adr/0004-sem-panorama-spa.md).
 
 Fase 8. Zenodo é conta externa; não criar até o dataset derivado existir.
 

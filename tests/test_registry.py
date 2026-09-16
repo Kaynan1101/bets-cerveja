@@ -24,9 +24,9 @@ def test_cisa_tem_conflito_de_interesse() -> None:
     assert source.tier_confiabilidade == "C"
 
 
-def test_spa_panorama_esta_pendente() -> None:
+def test_spa_panorama_fora_de_escopo() -> None:
     source = load_registry().get("spa_panorama_apostas_2025")
-    assert source.status_acervo == "pendente"
+    assert source.status_acervo == "fora_de_escopo"
     assert source.e_oficial is True
 
 

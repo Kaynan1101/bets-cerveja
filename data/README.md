@@ -5,7 +5,8 @@ Landing é byte a byte idêntico à fonte. Nada de limpar, renomear colunas ou c
 ```
 data/
   00_landing/   bytes originais + _manifest.jsonl (DVC, Fase 1)
-  01_raw/       Parquet 1:1 com a extração, sem limpeza de negócio (DVC)
+  01_raw/       Parquet 1:1 com a extração (DVC: data/01_raw.dvc)
+
   sample/       fatia pequena commitada no Git, para demo
 ```
 

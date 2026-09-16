@@ -30,7 +30,7 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 
 | Arquivo | Para quê |
 | --- | --- |
-| [docs/implementacao.md](docs/implementacao.md) | Checklist por fase e o que falta de ação sua |
+| [docs/etapas.md](docs/etapas.md) | Ordem das 10 etapas até o fim |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |
 | [docs/fontes_lacunas.md](docs/fontes_lacunas.md) | Matriz afirmação → fonte. Afirmação sem fonte muda no papel |

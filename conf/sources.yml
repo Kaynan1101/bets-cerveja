@@ -9,9 +9,10 @@
 #   C = jornalismo, indústria, amostra de fornecedor ou conflito de interesse
 #
 # status_acervo:
-#   no_lake   = arquivo já está em data/00_landing
-#   pendente  = precisamos coletar (pergunta externa)
-#   planejada = entra na Fase 1 via API, ainda sem bytes
+#   no_lake        = arquivo já está em data/00_landing
+#   pendente       = precisamos coletar (pergunta externa)
+#   planejada      = entra na Fase 1 via API, ainda sem bytes
+#   fora_de_escopo = deliberadamente fora do projeto
 
 sources:
   # --- Cerveja: Anuários MAPA (ano no nome original é REFERÊNCIA, não publicação) ---
@@ -235,9 +236,9 @@ sources:
     e_oficial: false
     tier_confiabilidade: C
     status_acervo: no_lake
-    conflito_de_interesse: IBJR e ANJL representam operadoras de apostas. Não é dado da SPA.
+    conflito_de_interesse: IBJR e ANJL representam operadoras de apostas.
     landing_filename: lca_ibjr_anjl_panorama_quota_fixa_nov2025.pdf
-    notas: Novembro de 2025. Emprego, capital social, tributos e patrocínio. Não substitui o Panorama oficial da SPA (GGR).
+    notas: Novembro de 2025. Emprego, capital social, tributos e patrocínio. Fonte setorial do Ato 3.
 
   - id: spa_panorama_apostas_2025
     titulo: Panorama do mercado de apostas (SPA/MF)
@@ -251,8 +252,8 @@ sources:
     vintage_publicacao: 2025
     e_oficial: true
     tier_confiabilidade: A
-    status_acervo: pendente
-    notas: NÃO está no acervo. GGR, apostadores e destinações legais. Coleta manual necessária.
+    status_acervo: fora_de_escopo
+    notas: Fora de escopo de propósito. Sem GGR oficial nem destinações legais no projeto.
 
   # --- Web (jornalismo; citar a fonte primária quando o texto aponta Euromonitor/Nielsen/Klavi) ---
   - id: web_senado_mercado_global_bets_2026
@@ -428,8 +429,9 @@ sources:
     licenca: dados públicos (IBGE)
     e_oficial: true
     tier_confiabilidade: A
-    status_acervo: planejada
-    notas: Verificar se cerveja sem álcool cai em 11.1 ou 11.2 ANTES de modelar. Bloqueante da Fase 2.
+    status_acervo: no_lake
+    api_path: /agregados/8885/periodos/all/variaveis/12606?localidades=N1[all]&classificacao=542[129192,129193]
+    notas: 129192=11.1 alcoólicas, 129193=11.2 não alcoólicas. Cerveja zero ainda precisa ser classificada entre as duas.
 
   - id: sidra_8888_pim_geral
     titulo: PIM-PF indicadores da produção industrial
@@ -441,7 +443,8 @@ sources:
     licenca: dados públicos (IBGE)
     e_oficial: true
     tier_confiabilidade: A
-    status_acervo: planejada
+    status_acervo: no_lake
+    api_path: /agregados/8888/periodos/all/variaveis/12606?localidades=N1[all]
 
   - id: sidra_7060_ipca
     titulo: IPCA por grupos e itens (cerveja e bebidas)
@@ -453,8 +456,9 @@ sources:
     licenca: dados públicos (IBGE)
     e_oficial: true
     tier_confiabilidade: A
-    status_acervo: planejada
-    notas: Regressor exógeno do SARIMAX. Confirmar o código do item cerveja na Fase 1.
+    status_acervo: no_lake
+    api_path: /agregados/7060/periodos/all/variaveis/63?localidades=N1[all]&classificacao=315[all]
+    notas: Variável 63. Filtrar o item cerveja (classificação 315) na extração.
 
   - id: bcb_sgs_rendimento_real
     titulo: Rendimento médio real (PNAD Contínua via SGS)
@@ -462,9 +466,10 @@ sources:
     dominio: macro
     tipo: api
     adapter: api_bcb
-    url: https://www.bcb.gov.br/estatisticas
+    url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.24364/dados
     licenca: dados públicos (bcb.gov.br)
     e_oficial: true
     tier_confiabilidade: A
-    status_acervo: planejada
-    notas: Confirmar o código da série SGS antes de ingestão. Candidata usual é rendimento médio real efetivo.
+    status_acervo: no_lake
+    api_path: /dados/serie/bcdata.sgs.24364/dados?formato=json
+    notas: Série 24364 (rendimento médio real). Confirmar rótulo no JSON na primeira ingestão.

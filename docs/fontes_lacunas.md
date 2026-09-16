@@ -24,16 +24,16 @@ Janela analítica: 2023–2026. Fontes anteriores ficam no lake só como context
 | Razão apostas/alimentação 1,5%→4,9%; apostas/lazer 10%→36% | mesmo relatório | nacional, dois pontos | — |
 | Mediana R$ 100 ≡ 16,7% do Bolsa Família; PCE 1,0→0,83 | Fundaj NT39 | PBF, recorte nacional | — |
 | 5 mi beneficiários PBF, R$ 3 bi em ago/2024, 70% chefes de família | BCB EE119 | mês, PBF | Um mês só. Não é série |
-| 3,7 mi apostadores Klavi em 2025 (dobro de 2024); 18% alto risco | Klavi (HTML próprio + Valor Investe) | amostra Open Finance | Não é censo. Conflito: fornecedor. Não comparar com 21,5 mi da SPA |
+| 3,7 mi apostadores Klavi em 2025 (dobro de 2024); 18% alto risco | Klavi (HTML próprio + Valor Investe) | amostra Open Finance | Não é censo. Não tratar como total nacional |
 | Mix sem álcool / puro malte / concentração / cancelamentos de registro | Anuários MAPA 2023–2025 | Brasil, anual, 3 pontos | V de puro malte e queda de sem álcool 4,9%→1,27% são **suspeitas de artefato de revisão**. Bloqueante |
 
 ## Ato 3 — o que dá e o que não dá para concluir
 
 | Afirmação | Fonte primária | Grain disponível | Lacuna |
 | --- | --- | --- | --- |
-| GGR 2025 e destinações legais | Panorama SPA | período oficial | **PDF ausente do acervo.** Coleta externa |
+| GGR 2025 e destinações legais | — | — | **Fora de escopo** (ADR 0004). Não afirmar |
 | ~1.144 empregos formais em 60 empregadores; R$ 1 salário / R$ 291 receita | IEPS (e/ou RAIS citado no dossiê) | setor-ano | Conferir se o IEPS cita RAIS ou estima |
-| 15,5 mil empregos diretos e indiretos; R$ 7,5 bi de capital social; R$ 9 bi de arrecadação 2025 | LCA+Cruz / IBJR / ANJL, nov/2025 | setor, um corte | **Não é SPA.** Associação do setor. Divergência de emprego com o IEPS |
+| 15,5 mil empregos diretos e indiretos; R$ 7,5 bi de capital social; R$ 9 bi de arrecadação 2025 | LCA+Cruz / IBJR / ANJL, nov/2025 | setor, um corte | Associação do setor. Divergência de emprego com o IEPS |
 | Custo social ~R$ 38,8 bi | IEPS | nacional, anual estimado | Modelo do IEPS, não contabilidade |
 | Cerveja: 41.305 empregos na fabricação, cadeia >2 mi, R$ 27 bi massa salarial, 2% PIB, R$ 49,6 bi impostos | Anuário MAPA / CervBrasil citado no Anuário | setor-ano | Separar o que é MAPA do que é associação |
 | Jovens <25: 45% consomem álcool, menor desde 1962 | MindMiners (via jornalismo/CISA?) | não está no lake como primário | **Fonte primária ausente.** Não afirmar até achar o relatório |
@@ -46,8 +46,8 @@ Janela analítica: 2023–2026. Fontes anteriores ficam no lake só como context
 | Produção cerveja | 2024 | 15,344 bi L (pub 2025) | 17,211 bi L (pub 2026) |
 | Comércio exterior | 2021–22 vs 2024+ | kg | litros (já inclui sem álcool) |
 | Cerveja sem álcool | ~2024 | 757 mi L produção MAPA | ~702 mi L vendas Euromonitor (matéria) |
-| Apostadores 2025 | 2025 | SPA ~21,5 mi (não no lake) | governo/LAI ~25 mi vs Klavi 3,7 mi |
-| Faturamento bets 2025 | 2025 | GGR SPA (ausente) | Regulus Partners US$ 4,1 bi (via Rádio Senado) |
+| Apostadores 2025 | 2025 | Klavi 3,7 mi (amostra Open Finance) | LAI ~25 mi (só via jornalismo; não é censo) |
+| Tamanho de mercado bets 2025 | 2025 | EE119 Pix (um mês, fluxo bruto) | Regulus Partners US$ 4,1 bi (via Rádio Senado) |
 | Emprego no setor de apostas | 2025 | IEPS ~1.144 formais / 60 empregadores | IBJR/ANJL 15,5 mil diretos e indiretos |
 
 ## Fontes no lake que não sustentam afirmação da janela

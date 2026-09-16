@@ -7,8 +7,8 @@ Catálogo vivo: [`conf/metrics.yml`](../conf/metrics.yml). Na Fase 3 vira seed `
 | id | O que é | Ordem de grandeza no acervo |
 | --- | --- | --- |
 | `fluxo_bruto_apostado` | Pix enviado às casas | ~R$ 20 bi / mês (EE119, ago/2024) |
-| `ggr` | Receita líquida da operadora | ~R$ 3 bi / mês (Panorama SPA, ausente) |
-| `destinacoes_legais` | 12% do GGR | uma ordem menor que o GGR |
+| `ggr` | Receita líquida da operadora | Fora de escopo neste projeto (ADR 0004) |
+| `destinacoes_legais` | 12% do GGR | Sem série no lake |
 
 Usar "faturamento das bets" sem dizer qual dos três é erro.
 
