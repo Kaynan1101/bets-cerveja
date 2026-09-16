@@ -1,0 +1,2 @@
+# README da pasta raw fica no Git, não no DVC.
+data/01_raw/README.md

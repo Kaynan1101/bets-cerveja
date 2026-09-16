@@ -15,6 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "dvc[s3]>=3.59",
     "pre-commit>=4.0",
     "pytest>=8.3",
     "ruff>=0.8",

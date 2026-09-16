@@ -14,7 +14,7 @@ O contrafactual SARIMAX (Fase 6) deve confirmar **ausência de anomalia agregada
 
 - Janela analítica: 2023–2026.
 - Fora de escopo: clima, safra de insumos. GLP-1 entra só como hipótese rival no artigo.
-- Python 3.12 (`uv`), DuckDB, dbt, DVC (ainda sem remote), Dagster na Fase 5, Power BI na Fase 7.
+- Python 3.12 (`uv`), DuckDB, dbt, DVC (Cloudflare R2), Dagster na Fase 5, Power BI na Fase 7.
 
 ## Quickstart
 
@@ -24,7 +24,7 @@ make sources
 make test
 ```
 
-O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, ignorado pelo Git. Conta Cloudflare R2 já existe; DVC espera bucket e token. Veja [docs/implementacao.md](docs/implementacao.md).
+O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC no Cloudflare R2. Depois de clonar: `uv sync --extra dev` e `make dvc-pull`. Veja [docs/implementacao.md](docs/implementacao.md).
 
 ## Documentação de implementação
 

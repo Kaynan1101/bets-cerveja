@@ -16,10 +16,17 @@ build/
 .env.*
 !.env.example
 
-# Lake (versionado por DVC depois; sample e READMEs entram no Git)
+# Lake (bytes no DVC; sample e READMEs no Git)
 data/00_landing/*
 data/01_raw/*
 !data/01_raw/README.md
+!data/00_landing.dvc
+!data/01_raw.dvc
+
+# DVC
+.dvc/cache
+.dvc/tmp
+.dvc/config.local
 data/bet/
 data/cerveja/
 *.duckdb

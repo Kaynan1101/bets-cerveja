@@ -1,0 +1,6 @@
+[core]
+    remote = r2
+['remote "r2"']
+    url = s3://bets-cerveja-landing
+    endpointurl = https://d0926911c42d9c0f8e8777f8d668e7f2.r2.cloudflarestorage.com
+    region = us-east-1

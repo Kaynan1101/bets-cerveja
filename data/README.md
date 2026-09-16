@@ -14,7 +14,7 @@ data/
 1. **Não edite arquivos em `00_landing`.** Se o parser melhorou, reextraia para `01_raw`. Se a fonte publicou errata, grave um *novo* arquivo com outro `vintage_publicacao`.
 2. O nome do Anuário da Cerveja no lake é `anuario_cerveja_refAAAA_pubBBBB.pdf`. O ano no site do MAPA é o de referência, não o de publicação. `anuario-da-cerveja-2025.pdf` era o Anuário 2026 (dados de 2025).
 3. Pastas `*_files` de HTML salvo no navegador não entram no lake. São assets de página, não dado.
-4. `data/00_landing` e `data/01_raw` estão no `.gitignore` até o DVC remoto existir. Não dê `git add data/00_landing`.
+4. Bytes de `data/00_landing` estão no DVC (`data/00_landing.dvc`), não no Git. Depois de clonar: `make dvc-pull`.
 
 ## Layout por fonte
 

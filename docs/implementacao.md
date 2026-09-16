@@ -9,26 +9,28 @@ Este arquivo é o checklist operacional. A arquitetura está em [architecture.md
 - CLI `betscerveja sources list|show|validate` lendo `conf/sources.yml` com Pydantic.
 - Acervo em `data/00_landing/<id>/seed/`, Anuários com `ref` e `pub` no nome, pastas `*_files` descartadas.
 - Panorama LCA+Cruz / IBJR / ANJL (nov/2025) registrado como fonte **tier C**. Não é o Panorama da SPA.
-- GNU Make instalado: `make test`, `make lint`, `make sources`.
+- GNU Make: `make test`, `make lint`, `make sources`, `make dvc-push`, `make dvc-pull`.
+- DVC no Cloudflare R2: `data/00_landing` versionado (25 arquivos, ~55 MB). Credenciais só em `.env` e `.dvc/config.local`.
 - Documentação de implementação, grain, lacunas e ADRs.
 
 ## O que ainda não é código (e não deve ser)
 
-A Fase 1 (ingest) e a Fase 2 (extract) só começam depois das três verificações bloqueantes. DVC espera o bucket e o token do R2.
+A Fase 1 (ingest) e a Fase 2 (extract) só começam depois das três verificações bloqueantes.
 
 ## Ações suas (externas)
 
-### Cloudflare R2 — conta criada; falta bucket e token
+### Cloudflare R2 — feito
 
-Não inicializo DVC até isso existir. No dashboard Cloudflare:
+Remote `r2` aponta para `s3://bets-cerveja-landing`. `dvc push` já subiu o landing. Secrets ficam em `.dvc/config.local` (gitignore). boto3 novo precisa das flags de checksum no `.env` (veja `.env.example`); sem elas o R2 responde AccessDenied no PutObject.
 
-1. **R2 → Create bucket.** Nome sugerido: `bets-cerveja-landing`.
-2. **Manage R2 API Tokens → Create API token**, com leitura/escrita **só nesse bucket**.
-3. Anotar: Account ID, Access Key ID, Secret Access Key.
-4. Endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`.
-5. Copiar [`.env.example`](../.env.example) para `.env` e preencher. **Não cole as chaves no chat e não commite o `.env`.**
+`data/01_raw` ainda não está no DVC: só tem README no Git. Entra no DVC quando a extração gerar Parquet.
 
-Quando o `.env` estiver preenchido, avise. Aí entra `dvc init`, remote S3-compatível, `dvc add` de `00_landing` e `01_raw`, `dvc push`. Secrets no GitHub Actions só na Fase 5.
+```powershell
+make dvc-push
+make dvc-pull
+```
+
+GitHub Secrets para o Actions só na Fase 5.
 
 ### Panorama da SPA / Ministério da Fazenda
 
