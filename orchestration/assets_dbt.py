@@ -15,10 +15,9 @@ dbt_project = DbtProject(
     project_dir=TRANSFORM_DIR,
     profiles_dir=TRANSFORM_DIR,
 )
+dbt_project.prepare_if_dev()
 if not Path(dbt_project.manifest_path).exists():
-    dbt_project.prepare()
-else:
-    dbt_project.prepare_if_dev()
+    dbt_project.preparer.prepare(dbt_project)
 
 
 @dbt_assets(manifest=dbt_project.manifest_path, project=dbt_project)
