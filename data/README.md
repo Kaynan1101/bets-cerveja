@@ -7,7 +7,7 @@ data/
   00_landing/   bytes originais + _manifest.jsonl (DVC, etapa 2)
   01_raw/       Parquet 1:1 com a extração (DVC: data/01_raw.dvc)
 
-  sample/       fatia pequena commitada no Git, para demo
+  sample/       sete extract.parquet commitados no Git, para `make demo` (sem R2)
 ```
 
 ## Regras
@@ -16,6 +16,7 @@ data/
 2. O nome do Anuário da Cerveja no lake é `anuario_cerveja_refAAAA_pubBBBB.pdf`. O ano no site do MAPA é o de referência, não o de publicação. `anuario-da-cerveja-2025.pdf` era o Anuário 2026 (dados de 2025).
 3. Pastas `*_files` de HTML salvo no navegador não entram no lake. São assets de página, não dado.
 4. Bytes de `data/00_landing` estão no DVC (`data/00_landing.dvc`), não no Git. Depois de clonar: `make dvc-pull`.
+5. `data/sample/` é só para `make demo`. A CI **não** usa esta pasta: continua `dvc pull` + `data/01_raw`. São Parquets extraídos (CC BY 4.0), não PDF/HTML do landing. Atualize com `uv run python scripts/sync_sample.py` depois do extract.
 
 ## Layout por fonte
 

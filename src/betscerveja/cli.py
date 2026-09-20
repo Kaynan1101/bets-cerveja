@@ -9,6 +9,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from betscerveja.demo import run_demo
 from betscerveja.extract.runner import extract_source
 from betscerveja.figures.render import render_figures
 from betscerveja.ingest.runner import ingest_source
@@ -102,6 +103,15 @@ def forecast() -> None:
     """SARIMAX no DuckDB (marts_ml). Requer `make dbt-build` antes."""
     summary = run_forecast()
     console.print(summary)
+
+
+@app.command("demo")
+def demo() -> None:
+    """Warehouse + figuras + pacote Zenodo a partir de data/sample. Sem R2."""
+    summary = run_demo()
+    console.print(summary)
+    console.print(summary["figures_index"])
+    console.print(summary["zenodo_dir"])
 
 
 @app.command("figures")

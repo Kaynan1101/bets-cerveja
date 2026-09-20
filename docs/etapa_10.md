@@ -1,6 +1,6 @@
 # Briefing para o agente — etapa 10
 
-**Status: a executar** (critério de pronto ainda não fechado). Última etapa numerada. Não emitir DOI nem chamar a API do Zenodo.
+**Status: feita** (critério de pronto fechado). Última etapa numerada. Não emitir DOI nem chamar a API do Zenodo.
 
 Cole o bloco abaixo num chat novo (Agent mode) e anexe este arquivo se quiser. O agente deve **executar** o briefing, não reescrever o plano.
 

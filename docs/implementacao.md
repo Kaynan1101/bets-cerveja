@@ -6,7 +6,7 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 
 - Fundação Python 3.12, CLI de fontes, lake em `00_landing`, DVC no R2.
 - Panorama IBJR/ANJL no lake (tier C). SPA **fora de escopo** (ADR 0004).
-- Make: `test`, `lint`, `sources`, `ingest`, `extract`, `dbt-build`, `sarimax`, `figures`, `dvc-push`, `dvc-pull`, `ci`, `dagster-dev`.
+- Make: `test`, `lint`, `sources`, `ingest`, `extract`, `dbt-build`, `sarimax`, `figures`, `demo`, `dvc-push`, `dvc-pull`, `ci`, `dagster-dev`.
 - Extract de API (SIDRA/BCB) → `data/01_raw/.../extract.parquet` (`RawApiSeries`).
 - Etapa 4: três perguntas de classificação respondidas em [fontes_lacunas.md](fontes_lacunas.md). Briefing: [etapa_4.md](etapa_4.md).
   1. Cerveja sem álcool na SIDRA 8885 fica em **11.1** (`129192`), não em 11.2.
@@ -17,14 +17,21 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 - Etapa 7: Dagster (`make dagster-dev`), GitHub Actions (lint → test → dvc pull → dbt build) e Pages com o catálogo `dbt docs`. Briefing: [etapa_7.md](etapa_7.md).
 - Etapa 8: SARIMAX / `marts_ml` (`ml_dataset_cerveja_mensal` no dbt; `fct_cerveja_previsao`, `ml_metricas`, `ml_coeficientes` no Python). Briefing: [etapa_8.md](etapa_8.md).
 - Etapa 9: figuras matplotlib em `exports/figures/` (`make figures`). [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md), briefing: [etapa_9.md](etapa_9.md).
+- Etapa 10: `make demo` (sample commitado → dbt → SARIMAX → figuras → `exports/zenodo/`). Pacote derivado pronto; DOI ainda é ação sua. Briefing: [etapa_10.md](etapa_10.md).
 
 ## Ainda não
 
-- Etapa 10: `make demo` e Zenodo.
+(vazio — etapas 1–10 fechadas. DOI Zenodo e secrets/Pages no GitHub continuam ações externas abaixo.)
 
 ## Ações suas (externas)
 
-R2 já está. No GitHub: criar os secrets `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY` (o mesmo par do `.env` local / R2) e em Settings → Pages → Source = GitHub Actions. Zenodo só na etapa 10, se você quiser DOI.
+R2 já está. No GitHub: criar os secrets `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY` (o mesmo par do `.env` local / R2) e em Settings → Pages → Source = GitHub Actions.
+
+Zenodo (não há token no repositório; o agente não chama a API):
+
+1. Conta no Zenodo (sandbox primeiro se quiser).
+2. Upload da pasta `exports/zenodo/` pelo site.
+3. Reservar/publicar o DOI e colar em `CITATION.cff`, `.zenodo.json` e README num commit posterior (hoje o placeholder é `https://doi.org/10.5281/zenodo.XXXX`).
 
 ## Comandos
 
@@ -43,6 +50,7 @@ make extract
 make dbt-build
 make sarimax
 make figures
+make demo
 make ci
 make dagster-dev
 ```

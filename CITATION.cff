@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Se usar este dataset, cite-o assim."
+type: dataset
+title: "bets-cerveja: marts derivados e figuras (2023–2026)"
+authors:
+  - name: "Kaynan"
+version: "0.1.0"
+license: CC-BY-4.0
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.XXXX"
+    description: "Placeholder até o recorde Zenodo ser reservado."
+url: "https://doi.org/10.5281/zenodo.XXXX"
+repository-code: "https://github.com/Kaynan1101/bets-cerveja"
+abstract: >-
+  Dataset derivado do pipeline bets-cerveja: Parquet dos marts de apresentação
+  e figuras estáticas sobre de onde saiu o dinheiro das apostas no Brasil
+  (2023–2026). Não republica os bytes originais do lake (PDF/HTML).
+  A ponte Locomotiva (48% C/D/E) é survey, não substituição litro a litro.

@@ -1,4 +1,4 @@
-.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build sarimax figures ci dagster-dev
+.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build sarimax figures demo ci dagster-dev
 
 sources:
 	uv run betscerveja sources validate
@@ -37,6 +37,9 @@ sarimax:
 
 figures:
 	uv run betscerveja figures
+
+demo:
+	uv run betscerveja demo
 
 ci: lint test dvc-pull dbt-build sarimax
 

@@ -12,7 +12,7 @@ make figures
 
 Equivalente: `uv run betscerveja figures`. Saída default: este diretório. Override do DuckDB: `BETSCERVEJA_DUCKDB_PATH`.
 
-`make figures` **não** entra em `make ci`. O HTML das figuras entra no `make demo` da etapa 10. Pages continua sendo só o catálogo dbt.
+`make figures` **não** entra em `make ci`. `make demo` (etapa 10) regenera estas figuras a partir de `data/sample/` e copia PNG + HTML para `exports/zenodo/`. Pages continua sendo só o catálogo dbt.
 
 ## Artefatos
 

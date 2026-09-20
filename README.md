@@ -22,6 +22,7 @@ O contrafactual SARIMAX (etapa 8) deve confirmar **ausência de anomalia agregad
 uv sync --extra dev
 make sources
 make test
+make demo
 ```
 
 O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC no Cloudflare R2. Depois de clonar: `uv sync --extra dev` e `make dvc-pull`. Veja [docs/implementacao.md](docs/implementacao.md).
@@ -37,6 +38,7 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 | [docs/etapa_7.md](docs/etapa_7.md) | Briefing da etapa 7 (Dagster / GitHub Actions / Pages) |
 | [docs/etapa_8.md](docs/etapa_8.md) | Briefing da etapa 8 (SARIMAX / `marts_ml`) |
 | [docs/etapa_9.md](docs/etapa_9.md) | Briefing da etapa 9 (figuras matplotlib) |
+| [docs/etapa_10.md](docs/etapa_10.md) | Briefing da etapa 10 (demo / Zenodo) |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
 | [docs/adr/0005-figuras-em-vez-de-power-bi.md](docs/adr/0005-figuras-em-vez-de-power-bi.md) | Por que figuras, não Power BI |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |

@@ -26,9 +26,9 @@ A SIDRA 8885 **não** separa zero álcool. Categoria `129192` (11.1) é CNAE de 
 
 Fora de escopo. Ver [ADR 0004](adr/0004-sem-panorama-spa.md).
 
-## Zenodo
+## DOI no Zenodo
 
-Etapa 10. Zenodo é conta externa; não criar até o dataset derivado existir.
+O dataset derivado já existe (`make demo` → `exports/zenodo/`). Reservar/publicar o DOI e colar em `CITATION.cff` continua ação externa — não há upload pela API neste repositório.
 
 ## Dagster vs Airflow "para o currículo"
 
