@@ -43,16 +43,16 @@ flowchart TB
 | Lake | Parquet + DVC (Cloudflare R2) | Landing imutável. Drive exigiria service account no CI. |
 | Warehouse | DuckDB | Um arquivo, zero servidor. `*.duckdb` no `.gitignore`. |
 | Transformação | dbt-duckdb | Todo SQL de negócio. Lineage e testes colados no model. |
-| Orquestração | Dagster na etapa 7 | Ver [ADR 0001](adr/0001-orquestracao-dagster-em-vez-de-airflow.md). |
-| ML | statsmodels SARIMAX na etapa 8 | Coeficiente, IC e p-valor. Precisamos poder dizer "efeito indistinguível de zero". |
-| Apresentação | matplotlib na etapa 9 | Consome o DuckDB; grava `exports/figures/*.png` + HTML. Poucos pontos; sem modelo semântico. Ver [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md). |
-| Demo / depósito | `make demo` na etapa 10 | Warehouse + figuras a partir de `data/sample/` (sem R2); pacote derivado em `exports/zenodo/`. GitHub Pages continua só o catálogo dbt. |
+| Orquestração | Dagster | Ver [ADR 0001](adr/0001-orquestracao-dagster-em-vez-de-airflow.md). |
+| ML | statsmodels SARIMAX | Coeficiente, IC e p-valor. Precisamos poder dizer "efeito indistinguível de zero". |
+| Apresentação | matplotlib | Consome o DuckDB; grava `exports/figures/*.png` + HTML. Poucos pontos; sem modelo semântico. Ver [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md). |
+| Demo / depósito | `make demo` | Warehouse + figuras a partir de `data/sample/` (sem R2); pacote derivado em `exports/zenodo/`. GitHub Pages continua só o catálogo dbt. |
 
 ## Três schemas de marts
 
 - `marts_core` — star schema estável. Entra nas figuras (produção anual, etc.).
 - `marts_analytics` — agregados por pergunta (Ato 1, 2 e 3). Folha do DAG, reescrevível.
-- `marts_ml` — dataset dbt + saídas do SARIMAX na etapa 8, lidas pelas figuras na banda de confiança.
+- `marts_ml` — dataset dbt + saídas do SARIMAX, lidas pelas figuras na banda de confiança.
 
 ## Narrativa que a arquitetura precisa sustentar
 

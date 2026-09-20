@@ -1,6 +1,6 @@
 # Figuras estáticas (etapa 9)
 
-PNG + HTML gerados por `make figures` a partir do DuckDB. Briefing: [`docs/etapa_9.md`](../../docs/etapa_9.md). Decisão: [ADR 0005](../../docs/adr/0005-figuras-em-vez-de-power-bi.md).
+PNG + HTML gerados por `make figures` a partir do DuckDB. Decisão: [ADR 0005](../../docs/adr/0005-figuras-em-vez-de-power-bi.md).
 
 ## Como gerar
 

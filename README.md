@@ -37,7 +37,7 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 
 | Arquivo | Para quê |
 | --- | --- |
-| [docs/etapas.md](docs/etapas.md) | Ordem das 10 etapas até o fim |
+| [docs/etapas.md](docs/etapas.md) | Ordem em que o pipeline foi construído |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
 | [docs/adr/0005-figuras-em-vez-de-power-bi.md](docs/adr/0005-figuras-em-vez-de-power-bi.md) | Por que figuras, não Power BI |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |

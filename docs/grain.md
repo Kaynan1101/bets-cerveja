@@ -40,7 +40,7 @@ Números esparsos de apostas (EE119, IBJR/ANJL, IEPS, Locomotiva, Klavi) entram 
 | `agg_de_onde_saiu_o_dinheiro` | categoria × recorte | Ato 2 |
 | `agg_mix_produto` | ano ref × vintage × segmento | Ato 2 |
 | `agg_estrutura_setorial` | setor × métrica | Ato 3 |
-| `agg_indicadores_declarados` | fonte × métrica × período | proveniência no HTML da etapa 9 |
+| `agg_indicadores_declarados` | fonte × métrica × período | proveniência no HTML das figuras |
 
 ## ML (`marts_ml`)
 

@@ -47,7 +47,11 @@ orchestration/.dagster/
 Thumbs.db
 desktop.ini
 .idea/
+.vscode/
 
 # Power BI temporários
 *.pbix.bak
 *.rdl.data
+
+# Pacote Zenodo é a pasta exports/zenodo/; o zip é só cópia
+exports/zenodo.zip
