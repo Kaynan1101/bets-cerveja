@@ -8,6 +8,7 @@
   "description": "Dataset derivado do pipeline bets-cerveja: Parquet dos marts de apresentação e figuras estáticas sobre de onde saiu o dinheiro das apostas no Brasil (2023–2026). Não republica os bytes originais do lake (PDF/HTML). A ponte Locomotiva (48% C/D/E) é survey, não substituição litro a litro. Código em https://github.com/Kaynan1101/bets-cerveja (MIT); dados derivados CC BY 4.0.",
   "access_right": "open",
   "license": "CC-BY-4.0",
+  "doi": "10.5281/zenodo.22863812",
   "upload_type": "dataset",
   "related_identifiers": [
     {

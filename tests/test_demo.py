@@ -112,7 +112,7 @@ def test_pack_zenodo_escreve_manifesto(tmp_path: Path) -> None:
     readme = (out / "README.md").read_text(encoding="utf-8")
     assert "48%" in readme
     assert "survey" in readme.lower()
-    assert "zenodo.XXXX" in readme
+    assert "zenodo.22863812" in readme
     assert list(out.rglob("*.duckdb")) == []
     assert list(out.rglob(".env")) == []
 

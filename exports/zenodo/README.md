@@ -4,7 +4,7 @@ Pacote para o Zenodo. Só dado **derivado**: Parquet dos marts,
 PNG das figuras e atribuição. Não inclui DuckDB, `.env`, lake DVC
 nem bytes de `data/00_landing`.
 
-DOI (placeholder até reservar o recorde): https://doi.org/10.5281/zenodo.XXXX
+DOI: https://doi.org/10.5281/zenodo.22863812
 
 Código: https://github.com/Kaynan1101/bets-cerveja (MIT). Dados derivados: [LICENSE-DATA](LICENSE-DATA)
 (CC BY 4.0).
@@ -25,7 +25,7 @@ Código: https://github.com/Kaynan1101/bets-cerveja (MIT). Dados derivados: [LIC
 - `marts/ml_coeficientes.parquet` — coeficientes, erro padrão, p-valor, IC
 - `figures/*.png` + `figures/index.html` — os cinco gráficos e o índice
 - `LICENSE-DATA` — CC BY 4.0 dos derivados
-- `CITATION.cff` / `.zenodo.json` — metadados (DOI placeholder)
+- `CITATION.cff` / `.zenodo.json` — metadados (DOI `10.5281/zenodo.22863812`)
 - `MANIFEST.txt` — lista dos arquivos deste pacote
 
 ## Como ler a ponte Locomotiva

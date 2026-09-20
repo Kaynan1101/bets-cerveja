@@ -13,7 +13,7 @@ from betscerveja.models.sarimax import duckdb_path
 from betscerveja.registry import REPO_ROOT
 
 DEFAULT_OUTPUT = REPO_ROOT / "exports" / "zenodo"
-DOI_PLACEHOLDER = "https://doi.org/10.5281/zenodo.XXXX"
+DOI = "https://doi.org/10.5281/zenodo.22863812"
 REPO_URL = "https://github.com/Kaynan1101/bets-cerveja"
 
 ZENODO_MARTS: tuple[str, ...] = (
@@ -104,7 +104,7 @@ Pacote para o Zenodo. Só dado **derivado**: Parquet dos marts,
 PNG das figuras e atribuição. Não inclui DuckDB, `.env`, lake DVC
 nem bytes de `data/00_landing`.
 
-DOI (placeholder até reservar o recorde): {DOI_PLACEHOLDER}
+DOI: {DOI}
 
 Código: {REPO_URL} (MIT). Dados derivados: [LICENSE-DATA](LICENSE-DATA)
 (CC BY 4.0).
@@ -125,7 +125,7 @@ Código: {REPO_URL} (MIT). Dados derivados: [LICENSE-DATA](LICENSE-DATA)
 - `marts/ml_coeficientes.parquet` — coeficientes, erro padrão, p-valor, IC
 - `figures/*.png` + `figures/index.html` — os cinco gráficos e o índice
 - `LICENSE-DATA` — CC BY 4.0 dos derivados
-- `CITATION.cff` / `.zenodo.json` — metadados (DOI placeholder)
+- `CITATION.cff` / `.zenodo.json` — metadados (DOI `10.5281/zenodo.22863812`)
 - `MANIFEST.txt` — lista dos arquivos deste pacote
 
 ## Como ler a ponte Locomotiva

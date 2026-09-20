@@ -8,9 +8,9 @@ version: "0.1.0"
 license: CC-BY-4.0
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.XXXX"
-    description: "Placeholder até o recorde Zenodo ser reservado."
-url: "https://doi.org/10.5281/zenodo.XXXX"
+    value: "10.5281/zenodo.22863812"
+    description: "DOI reservado no Zenodo (recorde ainda em rascunho até publicar)."
+url: "https://doi.org/10.5281/zenodo.22863812"
 repository-code: "https://github.com/Kaynan1101/bets-cerveja"
 abstract: >-
   Dataset derivado do pipeline bets-cerveja: Parquet dos marts de apresentação

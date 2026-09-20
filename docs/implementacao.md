@@ -17,11 +17,11 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 - Etapa 7: Dagster (`make dagster-dev`), GitHub Actions (lint → test → dvc pull → dbt build) e Pages com o catálogo `dbt docs`. Briefing: [etapa_7.md](etapa_7.md).
 - Etapa 8: SARIMAX / `marts_ml` (`ml_dataset_cerveja_mensal` no dbt; `fct_cerveja_previsao`, `ml_metricas`, `ml_coeficientes` no Python). Briefing: [etapa_8.md](etapa_8.md).
 - Etapa 9: figuras matplotlib em `exports/figures/` (`make figures`). [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md), briefing: [etapa_9.md](etapa_9.md).
-- Etapa 10: `make demo` (sample commitado → dbt → SARIMAX → figuras → `exports/zenodo/`). Pacote derivado pronto; DOI ainda é ação sua. Briefing: [etapa_10.md](etapa_10.md).
+- Etapa 10: `make demo` (sample commitado → dbt → SARIMAX → figuras → `exports/zenodo/`). DOI reservado: [10.5281/zenodo.22863812](https://doi.org/10.5281/zenodo.22863812). Briefing: [etapa_10.md](etapa_10.md).
 
 ## Ainda não
 
-(vazio — etapas 1–10 fechadas. DOI Zenodo e secrets/Pages no GitHub continuam ações externas abaixo.)
+(vazio — etapas 1–10 fechadas. Publicar o recorde Zenodo e secrets/Pages no GitHub continuam ações externas abaixo.)
 
 ## Ações suas (externas)
 
@@ -29,9 +29,11 @@ R2 já está. No GitHub: criar os secrets `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCE
 
 Zenodo (não há token no repositório; o agente não chama a API):
 
-1. Conta no Zenodo (sandbox primeiro se quiser).
-2. Upload da pasta `exports/zenodo/` pelo site.
-3. Reservar/publicar o DOI e colar em `CITATION.cff`, `.zenodo.json` e README num commit posterior (hoje o placeholder é `https://doi.org/10.5281/zenodo.XXXX`).
+DOI reservado: [10.5281/zenodo.22863812](https://doi.org/10.5281/zenodo.22863812). `CITATION.cff` e `.zenodo.json` já apontam para ele.
+
+1. No rascunho do recorde: substituir os arquivos pelo `exports/zenodo/` regenerado (para o README do pacote não sair com placeholder).
+2. Conferir que o DOI reservado bate com o dos arquivos.
+3. **Publish**. Depois disso o DOI é permanente.
 
 ## Comandos
 

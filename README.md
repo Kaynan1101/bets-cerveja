@@ -1,8 +1,14 @@
 # bets-cerveja
 
+[![CI](https://github.com/Kaynan1101/bets-cerveja/actions/workflows/ci.yml/badge.svg)](https://github.com/Kaynan1101/bets-cerveja/actions/workflows/ci.yml)
+
 Onde foi parar o fim de semana do brasileiro — de onde saiu o dinheiro das apostas (2023–2026).
 
 Pipeline de dados e análise sobre a composição do gasto discricionário no Brasil depois da regulamentação das apostas. A pergunta não é se a produção de cerveja caiu no agregado (os Anuários do MAPA mostram estabilidade). A pergunta é de onde saiu o dinheiro que foi para as bets, e o que isso implica para o canal on-premise (bares, restaurantes e delivery).
+
+![De onde saiu o dinheiro — 48% citam bares, restaurantes e delivery](exports/figures/ato2_substituicao.png)
+
+![Emprego em apostas — IEPS 1.144 vs IBJR 15.500 (duas definições, não uma série)](exports/figures/ato3_emprego.png)
 
 ## Limites causais (leia isto primeiro)
 
@@ -32,13 +38,6 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 | Arquivo | Para quê |
 | --- | --- |
 | [docs/etapas.md](docs/etapas.md) | Ordem das 10 etapas até o fim |
-| [docs/etapa_4.md](docs/etapa_4.md) | Briefing da etapa 4 (pedir build a um agente novo) |
-| [docs/etapa_5.md](docs/etapa_5.md) | Briefing da etapa 5 (dbt + DuckDB) |
-| [docs/etapa_6.md](docs/etapa_6.md) | Briefing da etapa 6 (qualidade / `qa_divergencias`) |
-| [docs/etapa_7.md](docs/etapa_7.md) | Briefing da etapa 7 (Dagster / GitHub Actions / Pages) |
-| [docs/etapa_8.md](docs/etapa_8.md) | Briefing da etapa 8 (SARIMAX / `marts_ml`) |
-| [docs/etapa_9.md](docs/etapa_9.md) | Briefing da etapa 9 (figuras matplotlib) |
-| [docs/etapa_10.md](docs/etapa_10.md) | Briefing da etapa 10 (demo / Zenodo) |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
 | [docs/adr/0005-figuras-em-vez-de-power-bi.md](docs/adr/0005-figuras-em-vez-de-power-bi.md) | Por que figuras, não Power BI |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |
