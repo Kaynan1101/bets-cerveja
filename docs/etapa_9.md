@@ -1,6 +1,6 @@
 # Briefing para o agente — etapa 9
 
-**Status: não feita.** Não avançar daqui para `make demo` ou Zenodo.
+**Status: feita** (critério de pronto fechado). Não avançar daqui para `make demo` ou Zenodo.
 
 Cole o bloco abaixo num chat novo (Agent mode) e anexe este arquivo se quiser. O agente deve **executar** o briefing, não reescrever o plano.
 

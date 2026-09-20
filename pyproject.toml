@@ -28,6 +28,7 @@ dev = [
     "dbt-core>=1.9,<1.11",
     "dbt-duckdb>=1.9,<1.11",
     "dvc[s3]>=3.59",
+    "matplotlib>=3.9",
     "pre-commit>=4.0",
     "pytest>=8.3",
     "ruff>=0.8",

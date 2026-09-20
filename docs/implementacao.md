@@ -6,7 +6,7 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 
 - Fundação Python 3.12, CLI de fontes, lake em `00_landing`, DVC no R2.
 - Panorama IBJR/ANJL no lake (tier C). SPA **fora de escopo** (ADR 0004).
-- Make: `test`, `lint`, `sources`, `ingest`, `extract`, `dbt-build`, `sarimax`, `dvc-push`, `dvc-pull`, `ci`, `dagster-dev`.
+- Make: `test`, `lint`, `sources`, `ingest`, `extract`, `dbt-build`, `sarimax`, `figures`, `dvc-push`, `dvc-pull`, `ci`, `dagster-dev`.
 - Extract de API (SIDRA/BCB) → `data/01_raw/.../extract.parquet` (`RawApiSeries`).
 - Etapa 4: três perguntas de classificação respondidas em [fontes_lacunas.md](fontes_lacunas.md). Briefing: [etapa_4.md](etapa_4.md).
   1. Cerveja sem álcool na SIDRA 8885 fica em **11.1** (`129192`), não em 11.2.
@@ -16,10 +16,10 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 - Etapa 6: testes `relationships` (e FK composta para `dim_fonte`), `qa_divergencias` e `marts_analytics` (`agg_*`). Briefing: [etapa_6.md](etapa_6.md).
 - Etapa 7: Dagster (`make dagster-dev`), GitHub Actions (lint → test → dvc pull → dbt build) e Pages com o catálogo `dbt docs`. Briefing: [etapa_7.md](etapa_7.md).
 - Etapa 8: SARIMAX / `marts_ml` (`ml_dataset_cerveja_mensal` no dbt; `fct_cerveja_previsao`, `ml_metricas`, `ml_coeficientes` no Python). Briefing: [etapa_8.md](etapa_8.md).
+- Etapa 9: figuras matplotlib em `exports/figures/` (`make figures`). [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md), briefing: [etapa_9.md](etapa_9.md).
 
 ## Ainda não
 
-- Etapa 9: figuras matplotlib em `exports/figures/` — não Power BI. `make figures` ainda não existe. [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md), briefing: [etapa_9.md](etapa_9.md).
 - Etapa 10: `make demo` e Zenodo.
 
 ## Ações suas (externas)
@@ -42,6 +42,7 @@ uv run betscerveja extract --source anuario_cerveja_ref2025_pub2026
 make extract
 make dbt-build
 make sarimax
+make figures
 make ci
 make dagster-dev
 ```

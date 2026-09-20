@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Annotated
 
 import typer
@@ -9,6 +10,7 @@ from rich.console import Console
 from rich.table import Table
 
 from betscerveja.extract.runner import extract_source
+from betscerveja.figures.render import render_figures
 from betscerveja.ingest.runner import ingest_source
 from betscerveja.models.sarimax import run_forecast
 from betscerveja.registry import StatusAcervo, load_registry
@@ -99,4 +101,16 @@ def extract(
 def forecast() -> None:
     """SARIMAX no DuckDB (marts_ml). Requer `make dbt-build` antes."""
     summary = run_forecast()
+    console.print(summary)
+
+
+@app.command("figures")
+def figures(
+    output_dir: Annotated[
+        Path | None,
+        typer.Option(help="Diretório de PNG + HTML (default: exports/figures)"),
+    ] = None,
+) -> None:
+    """Figuras matplotlib a partir do DuckDB. Não recomputa o SARIMAX."""
+    summary = render_figures(output_dir=output_dir)
     console.print(summary)
