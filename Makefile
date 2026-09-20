@@ -1,4 +1,4 @@
-.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build
+.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build ci dagster-dev
 
 sources:
 	uv run betscerveja sources validate
@@ -8,8 +8,8 @@ test:
 	uv run pytest
 
 lint:
-	uv run ruff check src tests
-	uv run ruff format --check src tests
+	uv run ruff check src tests orchestration
+	uv run ruff format --check src tests orchestration
 
 ingest:
 	uv run betscerveja ingest --source sidra_8885_pim_bebidas
@@ -31,3 +31,8 @@ dvc-push:
 
 dvc-pull:
 	uv run python scripts/dvc_run.py pull
+
+ci: lint test dvc-pull dbt-build
+
+dagster-dev:
+	uv run dagster dev -m orchestration.definitions

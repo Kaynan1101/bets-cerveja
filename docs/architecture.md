@@ -43,7 +43,7 @@ flowchart TB
 | Lake | Parquet + DVC (R2 ou B2, ainda não configurado) | Landing imutável. Drive exigiria service account no CI. |
 | Warehouse | DuckDB | Um arquivo, zero servidor. `*.duckdb` no `.gitignore`. |
 | Transformação | dbt-duckdb | Todo SQL de negócio. Lineage e testes colados no model. |
-| Orquestração | Dagster na Fase 5 | Ver [ADR 0001](adr/0001-orquestracao-dagster-em-vez-de-airflow.md). |
+| Orquestração | Dagster na etapa 7 | Ver [ADR 0001](adr/0001-orquestracao-dagster-em-vez-de-airflow.md). |
 | ML | statsmodels SARIMAX | Coeficiente, IC e p-valor. Precisamos poder dizer "efeito indistinguível de zero". |
 | BI | Power BI Desktop | Consome `exports/powerbi/*.parquet`. Star schema tem que estar testado antes. |
 

@@ -16,4 +16,4 @@ Ordem fixa. Não pular para Power BI ou SARIMAX antes do grain estar no dbt. Tar
 | 9 | Power BI (cinco páginas) | `.pbix` + PNG |
 | 10 | Demo, Zenodo (conta sua) | `make demo` |
 
-Etapa atual: **7** (Dagster / GitHub Actions / Pages). Etapas **1–6** feitas. Briefing da etapa 6: [etapa_6.md](etapa_6.md). Briefing da etapa 5 (histórico): [etapa_5.md](etapa_5.md). Briefing da etapa 4 (histórico): [etapa_4.md](etapa_4.md).
+Etapa atual: **8** (SARIMAX / `marts_ml`). Etapas **1–7** feitas. Briefing da etapa 7 (histórico): [etapa_7.md](etapa_7.md). Briefing da etapa 6 (histórico): [etapa_6.md](etapa_6.md). Briefing da etapa 5 (histórico): [etapa_5.md](etapa_5.md). Briefing da etapa 4 (histórico): [etapa_4.md](etapa_4.md).
