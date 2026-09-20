@@ -7,8 +7,6 @@ Ordem fixa. Não pular para Power BI ou SARIMAX antes do grain estar no dbt. Tar
 | 0 | Fundação, lake, DVC R2 | commit `0972bd2` |
 | 1 | SPA fora de escopo; grain sem `fct_apostas_oficial` | `sources validate` lista 1 fora de escopo |
 | 2 | Ingest SIDRA/BCB + `_manifest.jsonl` | `betscerveja ingest --source sidra_8885_pim_bebidas` idempotente |
-
-Etapa atual: **4** (verificações SIDRA/Anuário). Etapas **1–3** feitas neste ciclo. Briefing para o agente: [etapa_4.md](etapa_4.md).
 | 3 | Extrair PDFs/HTML do lake → `01_raw` Parquet + DVC | `dvc add data/01_raw` e `make dvc-push` |
 | 4 | Ler metadados SIDRA 8885 e as tabelas de mix do Anuário | três perguntas de classificação respondidas em `docs/fontes_lacunas.md` |
 | 5 | dbt + DuckDB (staging → marts) | `dbt build` no star schema |
@@ -18,4 +16,4 @@ Etapa atual: **4** (verificações SIDRA/Anuário). Etapas **1–3** feitas nest
 | 9 | Power BI (cinco páginas) | `.pbix` + PNG |
 | 10 | Demo, Zenodo (conta sua) | `make demo` |
 
-Etapa atual: **1** (escopo) em seguida **2** (ingest).
+Etapa atual: **5** (dbt). Etapas **1–4** feitas. Briefing da etapa 4 (histórico): [etapa_4.md](etapa_4.md).

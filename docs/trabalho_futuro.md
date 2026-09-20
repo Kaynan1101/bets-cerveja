@@ -20,7 +20,7 @@ Fica como hipótese rival no artigo (Scanntech, via jornalismo). Entrar no SARIM
 
 ## Cerveja sem álcool como série própria no contrafactual
 
-Depende da verificação bloqueante da SIDRA 8885. Se 11.1 excluir zero álcool, aí sim vale um segundo modelo — ainda não.
+A SIDRA 8885 **não** separa zero álcool. Categoria `129192` (11.1) é CNAE de estabelecimento; a CONCLA 1113-5/02 (sob 11.1) inclui explicitamente cerveja sem álcool. Segundo modelo no SARIMAX continua **fora de escopo**.
 
 ## Panorama da SPA
 

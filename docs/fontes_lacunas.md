@@ -13,7 +13,7 @@ Janela analítica: 2023–2026. Fontes anteriores ficam no lake só como context
 | Produção 2024 retificada = 17.210.754.610,75 L | MAPA Anuário ref 2025 / pub 2026, p. 51 | Brasil, anual | Método na p. 7 (retificações voluntárias / auditoria) |
 | Produção 2025 = 15.688.083.191,69 L (−8,85% vs 2024 retificado; +2,3% vs 2024 original) | MAPA Anuário ref 2025 / pub 2026 | Brasil, anual | Sinal da variação depende do vintage |
 | Per capita ~70–71 L/hab; ranking mundial 22º→21º | Anuários MAPA (tabelas internacionais) | país-ano | Conferir página na extração |
-| Série mensal de bebidas alcoólicas estável o bastante para o contrafactual cair no IC | SIDRA 8885 | Brasil, mensal, índice | **API ainda não ingestada.** Verificar classificação da cerveja sem álcool (11.1 vs 11.2) |
+| Série mensal de bebidas alcoólicas estável o bastante para o contrafactual cair no IC | SIDRA 8885, classificação 542, categoria **11.1** (`129192`) | Brasil, mensal, índice de estabelecimento CNAE | Cerveja zero **entra em 11.1**, não em 11.2 (`129193`). A métrica `producao_bebidas_alcoolicas_indice` é PIM-PF de fabricação de bebidas alcoólicas (inclui zero das cervejarias), não “só cerveja com álcool”. Sem série própria de zero. |
 
 ## Ato 2 — de onde saiu o dinheiro
 
@@ -25,7 +25,7 @@ Janela analítica: 2023–2026. Fontes anteriores ficam no lake só como context
 | Mediana R$ 100 ≡ 16,7% do Bolsa Família; PCE 1,0→0,83 | Fundaj NT39 | PBF, recorte nacional | — |
 | 5 mi beneficiários PBF, R$ 3 bi em ago/2024, 70% chefes de família | BCB EE119 | mês, PBF | Um mês só. Não é série |
 | 3,7 mi apostadores Klavi em 2025 (dobro de 2024); 18% alto risco | Klavi (HTML próprio + Valor Investe) | amostra Open Finance | Não é censo. Não tratar como total nacional |
-| Mix sem álcool / puro malte / concentração / cancelamentos de registro | Anuários MAPA 2023–2025 | Brasil, anual, 3 pontos | V de puro malte e queda de sem álcool 4,9%→1,27% são **suspeitas de artefato de revisão**. Bloqueante |
+| Mix sem álcool / puro malte / concentração / cancelamentos de registro | Anuários MAPA 2023–2025 (células abaixo) | Brasil, anual, 3 vintages | Sem álcool 4,9%→1,27%: **quebra metodológica**. Puro malte 29,2→24,7→29,2: **três medidas de vintage** (o 24,7% não some na revisão). Nenhum dos dois entra no dashboard como tendência. |
 
 ## Ato 3 — o que dá e o que não dá para concluir
 
@@ -53,3 +53,50 @@ Janela analítica: 2023–2026. Fontes anteriores ficam no lake só como context
 ## Fontes no lake que não sustentam afirmação da janela
 
 Anuários 2021 e 2022 (sem produção). Catalisi 2021 e 2022 (Euromonitor, fora da janela). CNN/iFood (evento pontual). Amaro e El Khatib (publicidade e universitários — contexto, não métrica de mercado). TCC da UFRGS (qualitativo).
+
+## Verificações etapa 4
+
+Respostas com citação. `pagina` / `tabela_idx` = campos do `extract.parquet` (`metodo=pdfplumber_table` ou `pdfplumber_text`).
+
+### 1. Cerveja sem álcool na SIDRA 8885: **11.1** (`129192`)
+
+A tabela 8885 não tem produto “cerveja” nem “cerveja zero”. Os metadados do agregado ([`/agregados/8885/metadados`](https://servicodados.ibge.gov.br/api/v3/agregados/8885/metadados)) expõem a classificação **542** “Grupos e classes industriais”, categorias **129192** “11.1 Fabricação de bebidas alcoólicas” e **129193** “11.2 Fabricação de bebidas não alcoólicas”. O Parquet `sidra_8885_pim_bebidas` confirma as duas categorias no payload (variável 12606).
+
+A PIM-PF classifica a **unidade local** pela CNAE 2.0, não o SKU. Na CONCLA, a subclasse [1113-5/02 Fabricação de cervejas e chopes](https://concla.ibge.gov.br/busca-online-cnae.html?subclasse=1113502&view=subclasse) está no grupo **11.1** e “compreende também a fabricação de cervejas sem álcool ou com baixo teor alcoólico”. Cerveja zero de cervejaria **não** vai para 11.2 (refrigerantes / não alcoólicas).
+
+Implicação: `producao_bebidas_alcoolicas_indice` continua o proxy mensal; inclui zero produzida em 11.1. Segundo modelo SARIMAX de zero **não** entra ([trabalho_futuro.md](trabalho_futuro.md)). Fora do dashboard: qualquer série rotulada “produção de cerveja com álcool” a partir da 8885.
+
+### 2. Sem álcool 4,9% → 1,27%: **quebra metodológica**
+
+Não é o denominador da retificação de 2024.
+
+| Vintage | Célula | Fonte |
+| --- | --- | --- |
+| 2023 | 0,8% do volume declarado; 118.924.317,44 L (citado no vintage seguinte) | pub 2024 `pagina=46`; pub 2025 `pagina=55` |
+| 2024 | 757.444.322,53 L = **4,9%** de 15.344.065.267,36 L; +536,9% vs 2023 | pub 2025 `pagina=55` (Tabela 21 no texto) |
+| 2025 | **1,27%** da produção nacional; sem litros na tabela | pub 2026 `pagina=54` (só chamada; a Tabela 21 desse vintage passou a ser estilo, `pagina=55` `tabela_idx=0`) |
+| 2024 retificado | 17.210.754.610,75 L (método: retificações voluntárias / auditoria) | pub 2026 `pagina=7` e `pagina=51` |
+
+757.444.322,53 / 17.210.754.610,75 ≈ **4,4%**, não 1,27%. 1,27% × 15.688.083.191,69 L (`pagina=51`) implica numerador ≈ **199 mi L**. O numerador mudou (ou o universo da chamada mudou); a edição 2026 **não republica** a tabela de teor alcoólico. Definição legal (≤ 0,5%) é a mesma em pub 2024 `pagina=46` e pub 2025 `pagina=54`.
+
+Fora do dashboard: série ou sparkline “mix sem álcool 2023–2025”.
+
+### 3. Puro malte 29,2% → 24,7% → 29,2%: **três medidas de vintage**
+
+O 24,7% **não some** na revisão de 2024. A pub 2026 não substitui o mix de 2024; só publica o de 2025.
+
+| Ano de referência | Participação | Volume (L) | Fonte |
+| --- | --- | --- | --- |
+| 2023 | 29,2% | (gráfico; sem célula de litros no extract) | pub 2024 `pagina=45` |
+| 2024 | 24,7% | (gráfico; sem célula de litros no extract) | pub 2025 `pagina=54` |
+| 2025 | 29,20% | 4.580.310.971,90 | pub 2026 `pagina=52` `tabela_idx=1`; chamada `pagina=53` |
+
+A Tabela 20 da pub 2026 traz variação 2024/2025 de **+21,01%** no volume de puro malte. 4.580.310.971,90 / 1,2101 ≈ 3,785 bi L, que é 24,7% de **15.344.065.267,36 L** (total *não* retificado da pub 2025 `pagina=51`), não 24,7% de 17,211 bi L. Ou seja: o YoY de mix usa o vintage 2024 original; o YoY do total usa o 2024 retificado (`pagina=7`). Definição (mosto só de malte de cevada / extrato de malte) é a mesma nos três vintages.
+
+Fora do dashboard: V de participação puro malte e qualquer decomposição shift-share desses três pontos.
+
+### O que não entra no dashboard (síntese)
+
+- Mix sem álcool e V de puro malte como tendência 2023–2025.
+- SIDRA 8885 como produção de “cerveja com álcool” ou como série de cerveja zero.
+- Segundo contrafactual SARIMAX para zero.

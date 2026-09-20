@@ -30,6 +30,13 @@ O arquivo original `anuario-da-cerveja-2025.pdf` é o Anuário **2026**, dados d
 
 - `spa_panorama_apostas_2025` — ADR 0004. GGR oficial não entra.
 
-## Ainda planejadas (API)
+## APIs no lake (SIDRA e BCB)
 
-SIDRA 8885/8888/7060 e BCB SGS — etapa 2, endpoints públicos.
+Ingest via `betscerveja ingest`; série tidy via `betscerveja extract` (schema `RawApiSeries`).
+
+| id | Adapter | O que entra no Parquet |
+| --- | --- | --- |
+| `sidra_8885_pim_bebidas` | `api_sidra` | Índice PIM-PF, classificação 542, categorias 11.1 (`129192`) e 11.2 (`129193`) |
+| `sidra_8888_pim_geral` | `api_sidra` | PIM-PF geral (Brasil) |
+| `sidra_7060_ipca` | `api_sidra` | IPCA variável 63; filtrar item cerveja (classificação 315) no dbt |
+| `bcb_sgs_rendimento_real` | `api_bcb` | SGS 24364; `periodo` = data do ponto; classificação nula |

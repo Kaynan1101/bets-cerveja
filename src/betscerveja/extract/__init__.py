@@ -1,4 +1,4 @@
-"""Extração PDF/HTML para Parquet (Fase 2)."""
+"""Extração PDF/HTML/API para Parquet."""
 
 from betscerveja.extract.runner import extract_source
 

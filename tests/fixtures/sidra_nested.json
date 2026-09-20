@@ -1,0 +1,57 @@
+[
+  {
+    "id": "12606",
+    "variavel": "Índice de base fixa sem ajuste sazonal (Base: média de 2022 = 100)",
+    "unidade": "Número-índice",
+    "resultados": [
+      {
+        "classificacoes": [
+          {
+            "id": "542",
+            "nome": "Seções e atividades industriais (CNAE 2.0)",
+            "categoria": {
+              "129192": "11.1 Fabricação de bebidas alcoólicas"
+            }
+          }
+        ],
+        "series": [
+          {
+            "localidade": {
+              "id": "1",
+              "nivel": { "id": "N1", "nome": "Brasil" },
+              "nome": "Brasil"
+            },
+            "serie": {
+              "202201": "100.0",
+              "202202": "...",
+              "202203": "-"
+            }
+          }
+        ]
+      },
+      {
+        "classificacoes": [
+          {
+            "id": "542",
+            "nome": "Seções e atividades industriais (CNAE 2.0)",
+            "categoria": {
+              "129193": "11.2 Fabricação de bebidas não-alcoólicas"
+            }
+          }
+        ],
+        "series": [
+          {
+            "localidade": {
+              "id": "1",
+              "nivel": { "id": "N1", "nome": "Brasil" },
+              "nome": "Brasil"
+            },
+            "serie": {
+              "202201": "98.5"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

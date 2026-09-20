@@ -431,7 +431,7 @@ sources:
     tier_confiabilidade: A
     status_acervo: no_lake
     api_path: /agregados/8885/periodos/all/variaveis/12606?localidades=N1[all]&classificacao=542[129192,129193]
-    notas: 129192=11.1 alcoólicas, 129193=11.2 não alcoólicas. Cerveja zero ainda precisa ser classificada entre as duas.
+    notas: 129192=11.1 alcoólicas, 129193=11.2 não alcoólicas. Cerveja zero fica em 11.1 (CONCLA 1113-5/02, sob o grupo 11.1).
 
   - id: sidra_8888_pim_geral
     titulo: PIM-PF indicadores da produção industrial

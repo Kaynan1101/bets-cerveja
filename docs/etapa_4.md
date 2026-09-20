@@ -1,5 +1,7 @@
 # Briefing para o agente — etapa 4
 
+**Status: feita** (critério de pronto fechado). Não avançar daqui para dbt/Dagster/SARIMAX.
+
 Cole o bloco abaixo num chat novo (Agent mode) e anexe este arquivo se quiser. O agente deve **executar** o briefing, não reescrever o plano.
 
 ```
