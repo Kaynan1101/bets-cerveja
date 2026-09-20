@@ -17,11 +17,29 @@ select
 union all
 
 select
+    {{ recorte_id("'D/E'", "null", "null") }},
+    'D/E',
+    cast(null as varchar),
+    cast(null as varchar),
+    'Classes D/E (Locomotiva / POF)'
+
+union all
+
+select
     {{ recorte_id("null", "'PBF'", "null") }},
     cast(null as varchar),
     'PBF',
     cast(null as varchar),
     'Beneficiários do Bolsa Família'
+
+union all
+
+select
+    {{ recorte_id("null", "'PBF'", "'mediana_r100'") }},
+    cast(null as varchar),
+    'PBF',
+    'mediana_r100',
+    'Bolsa Família após mediana de R$ 100 em apostas (Fundaj NT39)'
 
 union all
 

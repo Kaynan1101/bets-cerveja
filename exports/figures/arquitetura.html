@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Arquitetura do pipeline — bets-cerveja</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #fff;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: #111827;
+    }
+
+    .poster {
+      width: 1600px;
+      height: 980px;
+      padding: 44px 52px 36px;
+      background: #fff;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #6b7280;
+    }
+
+    .flow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .stage { width: 228px; }
+
+    .card {
+      width: 228px;
+      height: 252px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+      overflow: hidden;
+    }
+
+    .card-head {
+      height: 108px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-wrap {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .peach { background: #fff1e0; }
+    .blue { background: #e8f1ff; }
+    .green { background: #e8f8ef; }
+    .violet { background: #f1edff; }
+
+    .card-body {
+      padding: 16px 14px 14px;
+      text-align: center;
+    }
+
+    .stage-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .tool {
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .tool-sub {
+      margin-top: 6px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #6b7280;
+      line-height: 1.35;
+    }
+
+    .sink {
+      width: 228px;
+      height: 252px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .caption {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: #6b7280;
+      min-height: 70px;
+    }
+
+    .caption::before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 12px;
+      border-left: 1.5px dashed #9ca3af;
+      margin: 0 auto 8px;
+    }
+
+    .arrow {
+      width: 40px;
+      margin-top: 118px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .orch-line {
+      margin: 4px 114px 0;
+      border-top: 1.5px dashed #9ca3af;
+      position: relative;
+    }
+
+    .orch-line::before,
+    .orch-line::after {
+      content: "";
+      position: absolute;
+      top: -12px;
+      width: 1px;
+      height: 12px;
+      border-left: 1.5px dashed #9ca3af;
+    }
+
+    .orch-line::before { left: 0; }
+    .orch-line::after { right: 0; }
+
+    .bar {
+      margin-top: 18px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 22px;
+      min-height: 82px;
+    }
+
+    .bar-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .bar-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .bar-title {
+      font-size: 19px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .bar-desc {
+      font-size: 13.5px;
+      color: #4b5563;
+      margin-top: 2px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .footer-row .bar { margin: 0; flex: 1; }
+
+    .legend {
+      width: 268px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 16px 18px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .legend-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #374151;
+      margin-top: 8px;
+    }
+
+    .swatch-solid {
+      width: 28px;
+      border-top: 2px solid #111827;
+      position: relative;
+    }
+
+    .swatch-solid::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -5px;
+      border: 4px solid transparent;
+      border-left: 7px solid #111827;
+    }
+
+    .swatch-dash { width: 28px; border-top: 2px dashed #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <h1 class="title">Arquitetura do pipeline</h1>
+    <p class="subtitle">bets-cerveja · 2023–2026 · substituição de orçamento</p>
+
+    <div class="flow">
+      <section class="stage">
+        <div class="card">
+          <div class="card-head peach">
+            <div class="icon-wrap">
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <path d="M10.5 25.5h16.2a6.3 6.3 0 0 0 .5-12.6 8.4 8.4 0 0 0-16-2.2 6.8 6.8 0 0 0-.7 14.8Z" stroke="#ea580c" stroke-width="2.3" stroke-linejoin="round"/>
+                <circle cx="19" cy="17.2" r="2.1" fill="#ea580c"/>
+                <path d="M19 19.4v5.6M15.8 22.6h6.4" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="stage-name">Fontes de dados</p>
+            <p class="tool">SIDRA · BCB</p>
+            <p class="tool-sub">APIs REST, PDFs oficiais<br>e HTML jornalístico</p>
+          </div>
+        </div>
+        <p class="caption">Séries oficiais e documentos do acervo entram sem SQL de negócio</p>
+      </section>
+
+      <div class="arrow">
+        <svg width="28" height="16" viewBox="0 0 28 16"><path d="M1 8h22M18 3l7 5-7 5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <section class="stage">
+        <div class="card">
+          <div class="card-head blue">
+            <div class="icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 36 36">
+                <path d="M18.1 3.8c4.8 0 7.6 2.4 7.6 5.4 0 2.5-1.9 3.9-5.8 4.8l-1.8.4v2.4l1.9.4c4.1.9 6.1 2.5 6.1 5.3 0 3.3-3.2 5.7-8 5.7-4.7 0-8-2.4-8-5.7 0-2.8 2-4.4 6.1-5.3l1.9-.4v-2.4l-1.8-.4c-3.9-.9-5.8-2.3-5.8-4.8 0-3 2.8-5.4 7.6-5.4z" fill="#3776ab"/>
+                <circle cx="15.4" cy="10.4" r="1.35" fill="#ffde57"/>
+                <circle cx="20.8" cy="25.4" r="1.35" fill="#ffde57"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="stage-name">Ingestão</p>
+            <p class="tool">Python</p>
+            <p class="tool-sub">Typer · httpx<br>00_landing + SHA-256</p>
+          </div>
+        </div>
+        <p class="caption">I/O fica no adapter. Se a SIDRA cair, o dbt ainda roda no raw</p>
+      </section>
+
+      <div class="arrow">
+        <svg width="28" height="16" viewBox="0 0 28 16"><path d="M1 8h22M18 3l7 5-7 5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <section class="stage">
+        <div class="card">
+          <div class="card-head green">
+            <div class="icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect x="7.5" y="6" width="21" height="24" rx="3" stroke="#059669" stroke-width="2.2"/>
+                <path d="M12 13.5h12M12 18.5h12M12 23.5h7" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="stage-name">Extração</p>
+            <p class="tool">Parquet</p>
+            <p class="tool-sub">pdfplumber · camelot<br>trafilatura</p>
+          </div>
+        </div>
+        <p class="caption">Bytes viram 01_raw. O parser evolui sem rebaixar o lake</p>
+      </section>
+
+      <div class="arrow">
+        <svg width="28" height="16" viewBox="0 0 28 16"><path d="M1 8h22M18 3l7 5-7 5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <section class="stage">
+        <div class="card">
+          <div class="card-head violet">
+            <div class="icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <ellipse cx="18" cy="8.5" rx="9.5" ry="3.6" fill="#ffc107"/>
+                <path d="M8.5 8.5v7.2c0 2 4.3 3.6 9.5 3.6s9.5-1.6 9.5-3.6V8.5" stroke="#d97706" stroke-width="1.7"/>
+                <ellipse cx="18" cy="15.7" rx="9.5" ry="3.6" fill="#fff3bf" stroke="#d97706" stroke-width="1.5"/>
+                <path d="M8.5 15.7v8c0 2 4.3 3.6 9.5 3.6s9.5-1.6 9.5-3.6v-8" stroke="#4f46e5" stroke-width="1.7"/>
+                <ellipse cx="18" cy="23.7" rx="9.5" ry="3.6" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+                <path d="M8.5 23.7v4.6c0 2 4.3 3.6 9.5 3.6s9.5-1.6 9.5-3.6v-4.6" stroke="#4f46e5" stroke-width="1.7"/>
+                <ellipse cx="18" cy="28.3" rx="9.5" ry="3.6" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="stage-name">Transformação</p>
+            <p class="tool">DuckDB + dbt</p>
+            <p class="tool-sub">staging → marts<br>um arquivo, zero servidor</p>
+          </div>
+        </div>
+        <p class="caption">Todo SQL de negócio. Lineage e testes colados no model</p>
+      </section>
+
+      <div class="arrow">
+        <svg width="28" height="16" viewBox="0 0 28 16"><path d="M1 8h22M18 3l7 5-7 5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <section class="stage">
+        <div class="sink">
+          <svg width="86" height="86" viewBox="0 0 86 86">
+            <path d="M17 24v38c0 7 12 12.5 26 12.5s26-5.5 26-12.5V24" fill="#94a3b8"/>
+            <ellipse cx="43" cy="62" rx="26" ry="12.5" fill="#475569"/>
+            <ellipse cx="43" cy="24" rx="26" ry="12.5" fill="#334155"/>
+            <path d="M29 38h28M29 48h18" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div style="text-align:center">
+            <p class="stage-name">Análise</p>
+            <p class="tool">Figuras + Zenodo</p>
+            <p class="tool-sub">SARIMAX · matplotlib</p>
+          </div>
+        </div>
+        <p class="caption">Contrafactual e PNG estáticos. Pacote derivado no Zenodo</p>
+      </section>
+    </div>
+
+    <div class="orch-line"></div>
+
+    <div class="bar">
+      <div class="bar-icon" style="background:#ecfdf5">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+          <circle cx="10" cy="18" r="4" fill="#10b981"/>
+          <circle cx="26" cy="10" r="4" fill="#059669"/>
+          <circle cx="26" cy="26" r="4" fill="#047857"/>
+          <path d="M14 18h8M22.2 12.4l-8.4 4.2M22.2 23.6l-8.4-4.2" stroke="#065f46" stroke-width="2"/>
+        </svg>
+      </div>
+      <div>
+        <p class="bar-kicker">Orquestração</p>
+        <p class="bar-title">Dagster + GitHub Actions</p>
+        <p class="bar-desc">Agendamento, CI e monitoramento do pipeline.</p>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="bar">
+        <div class="bar-icon" style="background:#eff6ff">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="14" width="24" height="14" rx="3" stroke="#2563eb" stroke-width="2"/>
+            <path d="M10 14V12a8 8 0 0 1 16 0v2" stroke="#2563eb" stroke-width="2"/>
+            <circle cx="18" cy="21" r="2" fill="#2563eb"/>
+          </svg>
+        </div>
+        <div>
+          <p class="bar-kicker">Lake e infraestrutura</p>
+          <p class="bar-title">DVC · Cloudflare R2 · uv + Python 3.12</p>
+          <p class="bar-desc">Landing imutável. Warehouse em arquivo, sem servidor.</p>
+        </div>
+      </div>
+      <aside class="legend">
+        <p class="legend-title">Legenda</p>
+        <div class="legend-item"><span class="swatch-solid"></span> Fluxo de dados</div>
+        <div class="legend-item"><span class="swatch-dash"></span> Controle e orquestração</div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

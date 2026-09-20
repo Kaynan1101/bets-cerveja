@@ -4,7 +4,11 @@ LICENSE-DATA
 README.md
 figures/ato1_panorama.png
 figures/ato1_producao_anual.png
+figures/ato1_renda.png
 figures/ato1_sarimax.png
+figures/ato2_apostadores.png
+figures/ato2_orcamento.png
+figures/ato2_pix_ee119.png
 figures/ato2_substituicao.png
 figures/ato3_emprego.png
 figures/index.html

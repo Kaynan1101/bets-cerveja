@@ -123,7 +123,7 @@ Código: {REPO_URL} (MIT). Dados derivados: [LICENSE-DATA](LICENSE-DATA)
 - `marts/agg_indicadores_declarados.parquet` — proveniência / citações
 - `marts/ml_metricas.parquet` — uma linha por execução SARIMAX
 - `marts/ml_coeficientes.parquet` — coeficientes, erro padrão, p-valor, IC
-- `figures/*.png` + `figures/index.html` — os cinco gráficos e o índice
+- `figures/*.png` + `figures/index.html` — os nove gráficos e o índice
 - `LICENSE-DATA` — CC BY 4.0 dos derivados
 - `CITATION.cff` / `.zenodo.json` — metadados (DOI `10.5281/zenodo.22863812`)
 - `MANIFEST.txt` — lista dos arquivos deste pacote

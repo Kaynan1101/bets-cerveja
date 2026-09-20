@@ -58,6 +58,21 @@ metrics:
     periodicidade: irregular
     descricao: Participação das apostas no orçamento familiar, por classe.
 
+  - id: razao_apostas_alimentacao
+    unidade: percentual
+    periodicidade: irregular
+    descricao: Apostas como fração do gasto com alimentação (Locomotiva / POF). Dois cortes, não série.
+
+  - id: razao_apostas_lazer
+    unidade: percentual
+    periodicidade: irregular
+    descricao: Apostas como fração do gasto com lazer e cultura (Locomotiva / POF). Dois cortes, não série.
+
+  - id: pce_bolsa_familia
+    unidade: indice
+    periodicidade: irregular
+    descricao: Poder de Compra Equivalente do Bolsa Família em cestas básicas (Fundaj NT39).
+
   - id: substituicao_categoria_despesa
     unidade: percentual
     periodicidade: irregular

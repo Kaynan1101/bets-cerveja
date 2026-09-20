@@ -9,6 +9,9 @@ ggr,brl,mensal,"Gross Gaming Revenue. Sem fonte no lake; métrica reservada, nã
 destinacoes_legais,brl,mensal,12% do GGR destinados por lei. Não é o tamanho do mercado.
 apostadores,pessoas,irregular,"Contagem de apostadores. No lake: amostra Klavi, não censo."
 participacao_orcamento_apostas,percentual,irregular,"Participação das apostas no orçamento familiar, por classe."
+razao_apostas_alimentacao,percentual,irregular,"Apostas como fração do gasto com alimentação (Locomotiva / POF). Dois cortes, não série."
+razao_apostas_lazer,percentual,irregular,"Apostas como fração do gasto com lazer e cultura (Locomotiva / POF). Dois cortes, não série."
+pce_bolsa_familia,indice,irregular,Poder de Compra Equivalente do Bolsa Família em cestas básicas (Fundaj NT39).
 substituicao_categoria_despesa,percentual,irregular,Percentual de apostadores que dizem ter tirado o dinheiro de uma categoria.
 empregos_setor_apostas,pessoas,irregular,Emprego no setor de apostas. IEPS (formais/RAIS) e IBJR/ANJL (diretos e indiretos) não são a mesma definição.
 empregos_setor_cerveja,pessoas,anual,"Empregos diretos na fabricação de cervejas e chopes (CNAE 1113-5/02, CAGED via Anuário MAPA)."
