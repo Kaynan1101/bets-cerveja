@@ -1,0 +1,207 @@
+version: 2
+
+models:
+  - name: agg_panorama_mensal
+    description: >
+      Ato 1. Um mês na janela 2023–2026. Pivot de fct_serie_mensal
+      (8885 11.1, 8888, IPCA cerveja, rendimento real). Sem produção MAPA anual.
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [data_inicio]
+    columns:
+      - name: data_inicio
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+
+  - name: qa_divergencias
+    description: >
+      Ato 1. Métrica × período × par de fontes/vintages. Produção 2024 e emprego
+      IEPS/IBJR saem dos fatos; os demais pares vêm de seed_qa_divergencias.
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns:
+              [metrica_id, ano_referencia, source_id_a, vintage_a, source_id_b, vintage_b]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id_a, vintage_a]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id_b, vintage_b]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
+    columns:
+      - name: metrica_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
+      - name: ano_referencia
+        data_tests: [not_null]
+      - name: data_inicio
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+      - name: source_id_a
+        data_tests: [not_null]
+      - name: vintage_a
+        data_tests: [not_null]
+      - name: source_id_b
+        data_tests: [not_null]
+      - name: vintage_b
+        data_tests: [not_null]
+      - name: tipo_divergencia
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [vintage, unidade, definicao, amostra_vs_universo, fluxo_vs_receita]
+
+  - name: agg_de_onde_saiu_o_dinheiro
+    description: >
+      Ato 2. Categoria × recorte a partir de fct_substituicao_declarada
+      (Locomotiva p. 19, inclusive 48% bares/restaurantes/delivery).
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [categoria_id, recorte_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
+    columns:
+      - name: categoria_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_categoria_despesa")
+                field: categoria_id
+      - name: recorte_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_recorte_demografico")
+                field: recorte_id
+      - name: metrica_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
+      - name: geografia_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
+      - name: data_inicio
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+
+  - name: agg_mix_produto
+    description: >
+      Ato 2. Ano ref × vintage × segmento. Vazio nesta etapa — mix sem álcool
+      4,9%→1,27% e V de puro malte não entram como tendência.
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [ano_referencia, vintage_publicacao, segmento_id]
+    columns:
+      - name: segmento_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_segmento_produto")
+                field: segmento_id
+
+  - name: agg_estrutura_setorial
+    description: >
+      Ato 3. Setor × métrica. Duas linhas de emprego apostas (definições distintas)
+      e emprego direto da fabricação de cerveja (CAGED via Anuário). Sem GGR.
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [setor, metrica_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
+    columns:
+      - name: setor
+        data_tests: [not_null]
+      - name: metrica_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
+      - name: data_inicio
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+
+  - name: agg_indicadores_declarados
+    description: >
+      Proveniência de fct_indicador_declarado (pagina, citacao_textual).
+      Recorte entra na unique porque o EE119 tem dois fluxos no mesmo mês.
+      Sem ggr / destinacoes_legais.
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [source_id, metrica_id, data_inicio, recorte_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
+    columns:
+      - name: source_id
+        data_tests: [not_null]
+      - name: metrica_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
+      - name: data_inicio
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+      - name: geografia_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
+      - name: recorte_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_recorte_demografico")
+                field: recorte_id

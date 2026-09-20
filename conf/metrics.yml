@@ -67,3 +67,18 @@ metrics:
     unidade: pessoas
     periodicidade: irregular
     descricao: Emprego no setor de apostas. IEPS (formais/RAIS) e IBJR/ANJL (diretos e indiretos) não são a mesma definição.
+
+  - id: empregos_setor_cerveja
+    unidade: pessoas
+    periodicidade: anual
+    descricao: Empregos diretos na fabricação de cervejas e chopes (CNAE 1113-5/02, CAGED via Anuário MAPA).
+
+  - id: exportacao_cerveja
+    unidade: kg_ou_litro
+    periodicidade: anual
+    descricao: Exportação de cerveja no Anuário MAPA. kg até ref 2021–22; litros a partir do Anuário pub 2024 (inclui sem álcool).
+
+  - id: cerveja_sem_alcool_litros
+    unidade: litro
+    periodicidade: anual
+    descricao: Volume de cerveja sem álcool. MAPA é produção declarada; Euromonitor (via jornalismo) é venda. Não emendar.

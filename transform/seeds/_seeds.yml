@@ -28,3 +28,38 @@ seeds:
       - name: valor
         data_tests:
           - not_null
+  - name: seed_qa_divergencias
+    description: >
+      Pares de QA citáveis que não saem dos fatos (kg vs L, zero MAPA vs Euromonitor,
+      apostadores Klavi vs LAI, EE119 vs Regulus). Produção 2024 e emprego IEPS/IBJR
+      vêm de SQL em qa_divergencias.
+    config:
+      column_types:
+        metrica_id: varchar
+        ano_referencia: integer
+        data_inicio: date
+        source_id_a: varchar
+        vintage_a: integer
+        valor_a: double
+        unidade_a: varchar
+        source_id_b: varchar
+        vintage_b: integer
+        valor_b: double
+        unidade_b: varchar
+        tipo_divergencia: varchar
+        nota: varchar
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns:
+              [metrica_id, ano_referencia, source_id_a, vintage_a, source_id_b, vintage_b]
+    columns:
+      - name: metrica_id
+        data_tests:
+          - not_null
+      - name: tipo_divergencia
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [vintage, unidade, definicao, amostra_vs_universo, fluxo_vs_receita]

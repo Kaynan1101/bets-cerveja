@@ -13,6 +13,7 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
   2. Queda 4,9% → 1,27% do mix sem álcool é **quebra metodológica** (numerador muda; o denominador da retificação de 2024 não explica).
   3. Puro malte 29,2% → 24,7% → 29,2% são **três medidas de vintage**; o 24,7% não some na revisão de 2024.
 - Etapa 5: dbt-duckdb materializa `marts_core` em `warehouse/betscerveja.duckdb`. Briefing: [etapa_5.md](etapa_5.md).
+- Etapa 6: testes `relationships` (e FK composta para `dim_fonte`), `qa_divergencias` e `marts_analytics` (`agg_*`). Briefing: [etapa_6.md](etapa_6.md).
 
 ## Ações suas (externas)
 

@@ -381,6 +381,27 @@ def export_citacoes() -> None:
             "categoria_despesa_id": "",
             "fato": "mercado_anual",
         },
+        {
+            "source_id": "anuario_cerveja_ref2025_pub2026",
+            "metrica_id": "empregos_setor_cerveja",
+            "vintage_publicacao": 2026,
+            "ano_referencia": 2025,
+            "periodo": "2025-01-01",
+            "valor": 41305,
+            "unidade": "pessoas",
+            "pagina": 45,
+            "citacao_textual": (
+                "Fabricação de Cerveja e Chopes 41.305 (-2.72%). "
+                "Somente os dados oficiais do governo federal em relação aos empregos diretos."
+            ),
+            "geografia_nivel": "pais",
+            "geografia_codigo": "BR",
+            "recorte_classe": "",
+            "recorte_programa": "",
+            "recorte_amostra": "",
+            "categoria_despesa_id": "",
+            "fato": "indicador",
+        },
     ]
     _write_csv(SEEDS / "seed_citacoes.csv", rows, CITACOES_FIELDS)
 

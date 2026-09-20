@@ -155,16 +155,36 @@ models:
       - unique_combination:
           arguments:
             combination_of_columns: [data_inicio, metrica_id, geografia_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
     columns:
       - name: data_inicio
         data_type: date
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
       - name: metrica_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
       - name: geografia_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
       - name: source_id
         data_type: varchar
       - name: vintage_publicacao
@@ -185,6 +205,11 @@ models:
       - unique_combination:
           arguments:
             combination_of_columns: [ano_referencia, vintage_publicacao, geografia_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
     columns:
       - name: ano_referencia
         data_type: integer
@@ -194,13 +219,28 @@ models:
         data_tests: [not_null]
       - name: geografia_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
       - name: source_id
         data_type: varchar
       - name: metrica_id
         data_type: varchar
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
       - name: data_inicio
         data_type: date
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
       - name: valor
         data_type: double
       - name: unidade
@@ -221,6 +261,11 @@ models:
       - unique_combination:
           arguments:
             combination_of_columns: [source_id, metrica_id, data_inicio, geografia_id, recorte_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
     columns:
       - name: source_id
         data_type: varchar
@@ -229,16 +274,36 @@ models:
         data_type: integer
       - name: metrica_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
       - name: data_inicio
         data_type: date
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
       - name: geografia_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
       - name: recorte_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_recorte_demografico")
+                field: recorte_id
       - name: pagina
         data_type: integer
       - name: citacao_textual
@@ -259,6 +324,11 @@ models:
       - unique_combination:
           arguments:
             combination_of_columns: [source_id, categoria_id, recorte_id]
+      - relationships_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+            to: ref("dim_fonte")
+            to_columns: [source_id, vintage_publicacao]
     columns:
       - name: source_id
         data_type: varchar
@@ -267,16 +337,41 @@ models:
         data_type: integer
       - name: categoria_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_categoria_despesa")
+                field: categoria_id
       - name: recorte_id
         data_type: varchar
-        data_tests: [not_null]
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_recorte_demografico")
+                field: recorte_id
       - name: metrica_id
         data_type: varchar
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_metrica")
+                field: metrica_id
       - name: geografia_id
         data_type: varchar
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_geografia")
+                field: geografia_id
       - name: data_inicio
         data_type: date
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
       - name: valor
         data_type: double
       - name: unidade

@@ -1,6 +1,6 @@
 # transform (dbt + DuckDB)
 
-dbt entra na **etapa 5**. Star schema em `marts_core`. Sem `dbt_utils`: `dim_data` é spine SQL no DuckDB.
+dbt entra na **etapa 5**. Star schema em `marts_core`; qualidade e agregados em `marts_analytics` (etapa 6). Sem `dbt_utils`: `dim_data` é spine SQL no DuckDB. FKs nativas (`relationships`) e a FK composta `(source_id, vintage_publicacao)` → `dim_fonte` rodam no `dbt build`.
 
 ## Como rodar
 
@@ -22,7 +22,8 @@ O warehouse fica em `warehouse/betscerveja.duckdb` (gitignored).
 | `models/staging/` | `main_staging` | 1:1 com Parquet (`RawApiSeries` / `RawExtract`) |
 | `models/intermediate/` | `main_intermediate` | Período, filtro 8885 11.1, item IPCA cerveja, parse do Anuário |
 | `models/marts/core/` | `main_marts_core` | Dimensões e fatos de [`docs/grain.md`](../docs/grain.md) |
+| `models/marts/analytics/` | `main_marts_analytics` | `agg_*` e `qa_divergencias` (Ato 1–3). Folha do DAG. |
 
-`marts_analytics`, `marts_ml` e `qa_divergencias` ficam para etapas seguintes.
+`marts_ml` fica para a etapa 8.
 
 Seeds `seed_metricas` e `seed_fontes` são gerados de `conf/metrics.yml` e `conf/sources.yml`. `seed_citacoes` é só indicador esparso citável (e fallback da produção MAPA).
