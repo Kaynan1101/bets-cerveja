@@ -23,7 +23,8 @@ O warehouse fica em `warehouse/betscerveja.duckdb` (gitignored).
 | `models/intermediate/` | `main_intermediate` | Período, filtro 8885 11.1, item IPCA cerveja, parse do Anuário |
 | `models/marts/core/` | `main_marts_core` | Dimensões e fatos de [`docs/grain.md`](../docs/grain.md) |
 | `models/marts/analytics/` | `main_marts_analytics` | `agg_*` e `qa_divergencias` (Ato 1–3). Folha do DAG. |
+| `models/marts/ml/` | `main_marts_ml` | `ml_dataset_cerveja_mensal` (dbt). Forecast SARIMAX é Python. |
 
-`marts_ml` fica para a etapa 8.
+`marts_ml` na etapa 8: o dataset `ml_dataset_cerveja_mensal` é dbt (`models/marts/ml/`). As três saídas do Python (`fct_cerveja_previsao`, `ml_metricas`, `ml_coeficientes`) **não** são models dbt — o forecast não cabe em SQL. No DuckDB o schema aparece como `main_marts_ml` (prefixo do profile), o mesmo padrão de `main_marts_core`.
 
 Seeds `seed_metricas` e `seed_fontes` são gerados de `conf/metrics.yml` e `conf/sources.yml`. `seed_citacoes` é só indicador esparso citável (e fallback da produção MAPA).

@@ -16,4 +16,4 @@ Ordem fixa. Não pular para figuras ou SARIMAX antes do grain estar no dbt. Tare
 | 9 | Figuras estáticas (três atos + contrafactual + proveniência) | `make figures` gera PNG + HTML em `exports/figures/` |
 | 10 | Demo, Zenodo (conta sua) | `make demo` |
 
-Etapa atual: **8** (SARIMAX / `marts_ml`). Etapas **1–7** feitas. Briefing da etapa 8: [etapa_8.md](etapa_8.md). Briefing da etapa 9 (próxima): [etapa_9.md](etapa_9.md). Briefing da etapa 7 (histórico): [etapa_7.md](etapa_7.md). Briefing da etapa 6 (histórico): [etapa_6.md](etapa_6.md). Briefing da etapa 5 (histórico): [etapa_5.md](etapa_5.md). Briefing da etapa 4 (histórico): [etapa_4.md](etapa_4.md).
+Etapa atual: **9** (figuras matplotlib). Etapas **1–8** feitas. Briefing da etapa 8 (histórico): [etapa_8.md](etapa_8.md). Briefing da etapa 9 (próxima): [etapa_9.md](etapa_9.md). Briefing da etapa 7 (histórico): [etapa_7.md](etapa_7.md). Briefing da etapa 6 (histórico): [etapa_6.md](etapa_6.md). Briefing da etapa 5 (histórico): [etapa_5.md](etapa_5.md). Briefing da etapa 4 (histórico): [etapa_4.md](etapa_4.md).

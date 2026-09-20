@@ -34,3 +34,6 @@ models:
       analytics:
         +schema: marts_analytics
         +materialized: table
+      ml:
+        +schema: marts_ml
+        +materialized: table

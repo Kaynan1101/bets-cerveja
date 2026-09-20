@@ -1,1 +1,1 @@
-"""Contratos pandera da extração (Fase 2)."""
+"""Contratos pandera da extração e das saídas SARIMAX."""

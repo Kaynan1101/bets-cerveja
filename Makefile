@@ -1,4 +1,4 @@
-.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build ci dagster-dev
+.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build sarimax ci dagster-dev
 
 sources:
 	uv run betscerveja sources validate
@@ -32,7 +32,10 @@ dvc-push:
 dvc-pull:
 	uv run python scripts/dvc_run.py pull
 
-ci: lint test dvc-pull dbt-build
+sarimax:
+	uv run betscerveja forecast
+
+ci: lint test dvc-pull dbt-build sarimax
 
 dagster-dev:
 	uv run dagster dev -m orchestration.definitions

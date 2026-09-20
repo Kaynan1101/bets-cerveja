@@ -51,7 +51,7 @@ flowchart TB
 
 - `marts_core` — star schema estável. Entra nas figuras (produção anual, etc.).
 - `marts_analytics` — agregados por pergunta (Ato 1, 2 e 3). Folha do DAG, reescrevível.
-- `marts_ml` — saída do contrafactual, lida pelas figuras na banda de confiança.
+- `marts_ml` — dataset dbt + saídas do SARIMAX na etapa 8, lidas pelas figuras na banda de confiança.
 
 ## Narrativa que a arquitetura precisa sustentar
 

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: ml_dataset_cerveja_mensal
+    description: >
+      Um mês. Alvo (SIDRA 8885 11.1) + IPCA cerveja + rendimento real, só Brasil.
+      Inner join dos meses em que as três séries existem. Histórico longo (sem
+      corte em 2023). PIM geral não entra. As saídas do SARIMAX
+      (fct_cerveja_previsao, ml_metricas, ml_coeficientes) são escritas em
+      Python, não neste schema dbt.
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: data_inicio
+        data_type: date
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref("dim_data")
+                field: data
+      - name: producao_bebidas_alcoolicas_indice
+        data_type: double
+        data_tests: [not_null]
+      - name: ipca_cerveja
+        data_type: double
+        data_tests: [not_null]
+      - name: rendimento_real
+        data_type: double
+        data_tests: [not_null]

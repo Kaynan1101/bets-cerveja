@@ -10,6 +10,7 @@ from rich.table import Table
 
 from betscerveja.extract.runner import extract_source
 from betscerveja.ingest.runner import ingest_source
+from betscerveja.models.sarimax import run_forecast
 from betscerveja.registry import StatusAcervo, load_registry
 
 app = typer.Typer(no_args_is_help=True, help="Pipeline bets-cerveja.")
@@ -92,3 +93,10 @@ def extract(
         raise typer.BadParameter(f"fonte não encontrada: {source}") from exc
     dest = extract_source(item)
     console.print(f"escreveu {dest}")
+
+
+@app.command("forecast")
+def forecast() -> None:
+    """SARIMAX no DuckDB (marts_ml). Requer `make dbt-build` antes."""
+    summary = run_forecast()
+    console.print(summary)

@@ -19,3 +19,15 @@ def test_build_warehouse_nao_inclui_ingest() -> None:
     assert not ingest
     assert not extract
     assert AssetKey("ingest_sidra_8885_pim_bebidas") not in keys
+
+
+def test_build_forecast_separado_e_sem_ingest() -> None:
+    job = defs.resolve_job_def("build_forecast")
+    keys = set(job.asset_layer.executable_asset_keys)
+    ingest = {key for key in keys if key.path[-1].startswith("ingest_")}
+    extract = {key for key in keys if key.path[-1].startswith("extract_")}
+    assert not ingest
+    assert not extract
+    assert any(key.path[-1] == "sarimax_cerveja" for key in keys)
+    warehouse = defs.resolve_job_def("build_warehouse")
+    assert job.name != warehouse.name
