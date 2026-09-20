@@ -1,6 +1,6 @@
 # Trabalho futuro
 
-Fora do escopo atual de propósito. Não implementar nestas fases.
+Fora do escopo atual de propósito. Não implementar nestas etapas.
 
 ## Clima e safra de insumos
 
@@ -26,7 +26,9 @@ A SIDRA 8885 **não** separa zero álcool. Categoria `129192` (11.1) é CNAE de 
 
 Fora de escopo. Ver [ADR 0004](adr/0004-sem-panorama-spa.md).
 
-Fase 8. Zenodo é conta externa; não criar até o dataset derivado existir.
+## Zenodo
+
+Etapa 10. Zenodo é conta externa; não criar até o dataset derivado existir.
 
 ## Dagster vs Airflow "para o currículo"
 

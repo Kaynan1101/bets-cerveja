@@ -4,7 +4,7 @@ Landing é byte a byte idêntico à fonte. Nada de limpar, renomear colunas ou c
 
 ```
 data/
-  00_landing/   bytes originais + _manifest.jsonl (DVC, Fase 1)
+  00_landing/   bytes originais + _manifest.jsonl (DVC, etapa 2)
   01_raw/       Parquet 1:1 com a extração (DVC: data/01_raw.dvc)
 
   sample/       fatia pequena commitada no Git, para demo
@@ -23,4 +23,4 @@ data/
 data/00_landing/<source_id>/seed/<landing_filename>
 ```
 
-`seed` marca coleta anterior ao pipeline. A ingestão da Fase 1 grava `data/00_landing/<source_id>/<YYYY-MM-DD>/`.
+`seed` marca coleta anterior ao pipeline. A ingestão (etapa 2) grava `data/00_landing/<source_id>/<YYYY-MM-DD>/`.

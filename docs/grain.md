@@ -1,6 +1,6 @@
 # Grain
 
-Declarar a chave **antes** de escrever SQL. Na Fase 3 cada linha abaixo vira teste `unique` na chave composta e model contract do dbt.
+Declarar a chave **antes** de escrever SQL. Testes `unique` na chave composta e model contract do dbt já existem (etapas 5–6). Não mudar a tabela abaixo sem ADR.
 
 Fatos de periodicidade maior que dia apontam para o primeiro dia do período em `dim_data` e carregam `granularidade_periodo` como atributo degenerado.
 
@@ -40,7 +40,7 @@ Números esparsos de apostas (EE119, IBJR/ANJL, IEPS, Locomotiva, Klavi) entram 
 | `agg_de_onde_saiu_o_dinheiro` | categoria × recorte | Ato 2 |
 | `agg_mix_produto` | ano ref × vintage × segmento | Ato 2 |
 | `agg_estrutura_setorial` | setor × métrica | Ato 3 |
-| `agg_indicadores_declarados` | fonte × métrica × período | página de proveniência |
+| `agg_indicadores_declarados` | fonte × métrica × período | proveniência no HTML da etapa 9 |
 
 ## ML (`marts_ml`)
 

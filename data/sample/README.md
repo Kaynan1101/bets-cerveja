@@ -1,1 +1,1 @@
-# Amostra commitada para `make demo` (Fase 8). Vazia até existir extração.
+# Amostra commitada para `make demo` (etapa 10). Vazia até existir extração.

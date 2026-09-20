@@ -8,13 +8,13 @@ Pipeline de dados e análise sobre a composição do gasto discricionário no Br
 
 Nenhuma fonte do acervo liga, de forma quantificada, redução de consumo de cerveja a aumento de gasto com apostas. A ponte empírica é o canal **bares, restaurantes e delivery** no survey da Locomotiva (48% dos apostadores das classes C/D/E dizem ter tirado o dinheiro daí). O projeto trata isso como ponte, não como evidência de substituição litro a litro.
 
-O contrafactual SARIMAX (Fase 6) deve confirmar **ausência de anomalia agregada**. Isso é resultado, não falha.
+O contrafactual SARIMAX (etapa 8) deve confirmar **ausência de anomalia agregada**. Isso é resultado, não falha.
 
 ## Janela e stack
 
 - Janela analítica: 2023–2026.
 - Fora de escopo: clima, safra de insumos. GLP-1 entra só como hipótese rival no artigo.
-- Python 3.12 (`uv`), DuckDB, dbt, DVC (Cloudflare R2), Dagster na Fase 5, Power BI na Fase 7.
+- Python 3.12 (`uv`), DuckDB, dbt, DVC (Cloudflare R2), Dagster na etapa 7, figuras matplotlib na etapa 9 ([ADR 0005](docs/adr/0005-figuras-em-vez-de-power-bi.md)).
 
 ## Quickstart
 
@@ -35,7 +35,10 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 | [docs/etapa_5.md](docs/etapa_5.md) | Briefing da etapa 5 (dbt + DuckDB) |
 | [docs/etapa_6.md](docs/etapa_6.md) | Briefing da etapa 6 (qualidade / `qa_divergencias`) |
 | [docs/etapa_7.md](docs/etapa_7.md) | Briefing da etapa 7 (Dagster / GitHub Actions / Pages) |
+| [docs/etapa_8.md](docs/etapa_8.md) | Briefing da etapa 8 (SARIMAX / `marts_ml`) |
+| [docs/etapa_9.md](docs/etapa_9.md) | Briefing da etapa 9 (figuras matplotlib) |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
+| [docs/adr/0005-figuras-em-vez-de-power-bi.md](docs/adr/0005-figuras-em-vez-de-power-bi.md) | Por que figuras, não Power BI |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |
 | [docs/fontes_lacunas.md](docs/fontes_lacunas.md) | Matriz afirmação → fonte. Afirmação sem fonte muda no papel |
 | [docs/sources.md](docs/sources.md) | Como ler `conf/sources.yml` |

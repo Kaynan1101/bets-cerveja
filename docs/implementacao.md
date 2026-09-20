@@ -16,6 +16,12 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 - Etapa 6: testes `relationships` (e FK composta para `dim_fonte`), `qa_divergencias` e `marts_analytics` (`agg_*`). Briefing: [etapa_6.md](etapa_6.md).
 - Etapa 7: Dagster (`make dagster-dev`), GitHub Actions (lint → test → dvc pull → dbt build) e Pages com o catálogo `dbt docs`. Briefing: [etapa_7.md](etapa_7.md).
 
+## Ainda não
+
+- Etapa 8: SARIMAX / `marts_ml` ([etapa_8.md](etapa_8.md)).
+- Etapa 9: figuras matplotlib em `exports/figures/` — não Power BI. `make figures` ainda não existe. [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md), briefing: [etapa_9.md](etapa_9.md).
+- Etapa 10: `make demo` e Zenodo.
+
 ## Ações suas (externas)
 
 R2 já está. No GitHub: criar os secrets `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY` (o mesmo par do `.env` local / R2) e em Settings → Pages → Source = GitHub Actions. Zenodo só na etapa 10, se você quiser DOI.

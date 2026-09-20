@@ -25,7 +25,7 @@ flowchart TB
         F6[marts_ml]
     end
     H1[SARIMAX]
-    G1[Power BI]
+    G1[figuras matplotlib]
     A1 --> B1 --> C1 --> D1 --> E1 --> F2 --> F3 --> F4 --> F5
     F4 --> H1 --> F6
     F4 --> G1
@@ -40,18 +40,18 @@ flowchart TB
 | Fundação | `uv` + Python 3.12 | Lockfile. 3.14 da máquina não tem wheel estável para dbt/camelot. |
 | Ingestão | Typer, httpx, tenacity | I/O sujo. dbt não faz chamada de rede: se a SIDRA cair, `dbt build` ainda roda no raw. |
 | Extração | pdfplumber / camelot / trafilatura / pandera | Parser evolui sem rebaixar. pandera testa forma; dbt testa semântica. |
-| Lake | Parquet + DVC (R2 ou B2, ainda não configurado) | Landing imutável. Drive exigiria service account no CI. |
+| Lake | Parquet + DVC (Cloudflare R2) | Landing imutável. Drive exigiria service account no CI. |
 | Warehouse | DuckDB | Um arquivo, zero servidor. `*.duckdb` no `.gitignore`. |
 | Transformação | dbt-duckdb | Todo SQL de negócio. Lineage e testes colados no model. |
 | Orquestração | Dagster na etapa 7 | Ver [ADR 0001](adr/0001-orquestracao-dagster-em-vez-de-airflow.md). |
-| ML | statsmodels SARIMAX | Coeficiente, IC e p-valor. Precisamos poder dizer "efeito indistinguível de zero". |
-| BI | Power BI Desktop | Consome `exports/powerbi/*.parquet`. Star schema tem que estar testado antes. |
+| ML | statsmodels SARIMAX na etapa 8 | Coeficiente, IC e p-valor. Precisamos poder dizer "efeito indistinguível de zero". |
+| Apresentação | matplotlib na etapa 9 | Consome o DuckDB; grava `exports/figures/*.png` + HTML. Poucos pontos; sem modelo semântico. Ver [ADR 0005](adr/0005-figuras-em-vez-de-power-bi.md). |
 
 ## Três schemas de marts
 
-- `marts_core` — star schema estável. Entra no modelo semântico do Power BI.
+- `marts_core` — star schema estável. Entra nas figuras (produção anual, etc.).
 - `marts_analytics` — agregados por pergunta (Ato 1, 2 e 3). Folha do DAG, reescrevível.
-- `marts_ml` — saída do contrafactual, lida pelo BI na banda de confiança.
+- `marts_ml` — saída do contrafactual, lida pelas figuras na banda de confiança.
 
 ## Narrativa que a arquitetura precisa sustentar
 
