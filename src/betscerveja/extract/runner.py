@@ -15,7 +15,7 @@ from betscerveja.registry import REPO_ROOT, Adapter, Source, TipoFonte
 from betscerveja.schemas.raw import RawApiSeries, RawExtract
 
 RAW_ROOT = REPO_ROOT / "data" / "01_raw"
-SIDRA_MISSING = {"...", "-", ""}
+SIDRA_MISSING = {"...", "..", "-", ""}
 
 
 def landing_file(source: Source) -> Path:

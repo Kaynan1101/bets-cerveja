@@ -1,6 +1,6 @@
 # Briefing para o agente — etapa 5
 
-**Status: a fazer.** Não avançar daqui para qualidade/`qa_divergencias`, Dagster, SARIMAX ou Power BI.
+**Status: feita** (critério de pronto fechado). Não avançar daqui para qualidade/`qa_divergencias`, Dagster, SARIMAX ou Power BI.
 
 Cole o bloco abaixo num chat novo (Agent mode) e anexe este arquivo se quiser. O agente deve **executar** o briefing, não reescrever o plano.
 

@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Parquets de extract em data/01_raw (DVC). Sem regra de negócio.
+    tables:
+      - name: sidra_8885_pim_bebidas
+        meta:
+          external_location: "{{ var('raw_root') }}/cerveja/sidra_8885_pim_bebidas/extract.parquet"
+      - name: sidra_8888_pim_geral
+        meta:
+          external_location: "{{ var('raw_root') }}/cerveja/sidra_8888_pim_geral/extract.parquet"
+      - name: sidra_7060_ipca
+        meta:
+          external_location: "{{ var('raw_root') }}/macro/sidra_7060_ipca/extract.parquet"
+      - name: bcb_sgs_rendimento_real
+        meta:
+          external_location: "{{ var('raw_root') }}/macro/bcb_sgs_rendimento_real/extract.parquet"
+      - name: anuario_cerveja_ref2023_pub2024
+        meta:
+          external_location: "{{ var('raw_root') }}/cerveja/anuario_cerveja_ref2023_pub2024/extract.parquet"
+      - name: anuario_cerveja_ref2024_pub2025
+        meta:
+          external_location: "{{ var('raw_root') }}/cerveja/anuario_cerveja_ref2024_pub2025/extract.parquet"
+      - name: anuario_cerveja_ref2025_pub2026
+        meta:
+          external_location: "{{ var('raw_root') }}/cerveja/anuario_cerveja_ref2025_pub2026/extract.parquet"

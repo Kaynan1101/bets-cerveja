@@ -1,0 +1,8 @@
+betscerveja:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: warehouse/betscerveja.duckdb
+      threads: 4
+      schema: main

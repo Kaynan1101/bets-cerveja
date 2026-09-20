@@ -1,0 +1,31 @@
+source_id,vintage_publicacao,tier_confiabilidade,e_oficial,ano_referencia,titulo,dominio,status_acervo
+anuario_cerveja_ref2021_pub2022,2022,A,true,2021,Anuário da Cerveja 2021,cerveja,no_lake
+anuario_cerveja_ref2022_pub2023,2023,A,true,2022,Anuário da Cerveja 2022,cerveja,no_lake
+anuario_cerveja_ref2023_pub2024,2024,A,true,2023,Anuário da Cerveja ano referência 2023,cerveja,no_lake
+anuario_cerveja_ref2024_pub2025,2025,A,true,2024,Anuário da Cerveja ano referência 2024,cerveja,no_lake
+anuario_cerveja_ref2025_pub2026,2026,A,true,2025,Anuário da Cerveja ano referência 2025,cerveja,no_lake
+cisa_panorama_alcool_saude_2023,2023,C,false,2023,Álcool e a Saúde dos Brasileiros: Panorama 2023,cerveja,no_lake
+araujo_tcc_cerveja_ufrgs_2025,2025,B,false,2025,Cerveja: hábitos de consumo que traduzem uma paixão nacional,cerveja,no_lake
+bcb_ee119_apostas_2024,2024,A,true,2024,Análise técnica sobre o mercado de apostas online no Brasil e o perfil dos apostadores,apostas,no_lake
+fundaj_nt39_pce_2024,2024,A,true,2024,Como as Apostas Online Estão Comprometendo o Poder de Compra das Famílias no Bolsa Família,apostas,no_lake
+ieps_dossie_bets_saude,2025,B,false,2025,A saúde dos brasileiros em jogo,apostas,no_lake
+strategy_impacto_apostas_consumo_2024,2024,C,false,2024,O impacto das apostas esportivas no consumo,apostas,no_lake
+amaro_bets_publicidade_intercom_2024,2024,B,false,2024,Apostas esportivas no Brasil: breve análise da publicidade de bets,apostas,no_lake
+elkhatib_bets_universitarios_2024,2024,B,false,2024,Diversão ou Armadilha? Apostas esportivas entre universitários (TCP),apostas,no_lake
+lca_ibjr_anjl_panorama_apostas_2025,2025,C,false,2025,Panorama do mercado de apostas de quota fixa,apostas,no_lake
+spa_panorama_apostas_2025,2025,A,true,2025,Panorama do mercado de apostas (SPA/MF),apostas,fora_de_escopo
+web_senado_mercado_global_bets_2026,2026,C,false,,Brasil é o quinto maior mercado global de apostas,apostas,no_lake
+web_valor_klavi_apostadores_2026,2026,C,false,,"Número de apostadores dobra no Brasil em um ano, e parte já corta gastos essenciais",apostas,no_lake
+web_klavi_placar_bets,2026,C,false,,Placar da Copa — Apostas e saúde financeira,apostas,no_lake
+web_g1_propaganda_bets_2025,2025,C,false,,Propaganda de dinheiro fácil em bets cresce,apostas,no_lake
+web_catalisi_consumo_2022,2023,C,false,2022,Brasil consumiu quase 16 bilhões de litros em 2022,cerveja,no_lake
+web_istoe_sem_alcool,2024,C,false,,Brasil só perde para a Alemanha no consumo de cerveja sem álcool,cerveja,no_lake
+web_exame_zero_885mi,2024,C,false,,Brasil vai consumir 885 milhões de litros de cerveja zero,cerveja,no_lake
+web_g1_consumo_cerveja_2024,2024,C,false,2024,Consumo de cerveja deve voltar a crescer no Brasil em 2024,cerveja,no_lake
+web_central_varejo_sem_alcool,2024,C,false,,Consumo de cervejas sem álcool e menos calóricas cresce,cerveja,no_lake
+web_cnn_ifood_copa,2024,C,false,,Estreia da Seleção Brasileira elevou venda de bebidas em 63% no iFood,cerveja,no_lake
+web_catalisi_vendas_2021,2022,C,false,2021,"Vendas de cerveja alcançam 14,3 bilhões de litros no Brasil em 2021",cerveja,no_lake
+sidra_8885_pim_bebidas,0,A,true,,PIM-PF produção industrial por atividade (bebidas alcoólicas e não alcoólicas),cerveja,no_lake
+sidra_8888_pim_geral,0,A,true,,PIM-PF indicadores da produção industrial,cerveja,no_lake
+sidra_7060_ipca,0,A,true,,IPCA por grupos e itens (cerveja e bebidas),macro,no_lake
+bcb_sgs_rendimento_real,0,A,true,,Rendimento médio real (PNAD Contínua via SGS),macro,no_lake

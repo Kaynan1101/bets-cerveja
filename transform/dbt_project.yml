@@ -1,0 +1,33 @@
+name: betscerveja
+version: "1.0.0"
+config-version: 2
+profile: betscerveja
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+target-path: target
+clean-targets: ["target", "dbt_packages", "logs"]
+
+vars:
+  raw_root: data/01_raw
+
+seeds:
+  betscerveja:
+    +schema: seeds
+    +quote_columns: false
+
+models:
+  betscerveja:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    marts:
+      core:
+        +schema: marts_core
+        +materialized: table

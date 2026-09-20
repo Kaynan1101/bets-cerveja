@@ -1,4 +1,4 @@
-# Catálogo de métricas canônicas. Vira seed do dbt na Fase 3.
+# Catálogo de métricas canônicas. Vira seed_metricas / dim_metrica no dbt (etapa 5).
 # Não misturar fluxo bruto, GGR e destinações legais.
 
 metrics:
@@ -11,8 +11,14 @@ metrics:
   - id: producao_bebidas_alcoolicas_indice
     unidade: indice
     periodicidade: mensal
-    descricao: PIM-PF SIDRA 8885, categoria bebidas alcoólicas.
+    descricao: PIM-PF SIDRA 8885, categoria 11.1 (129192). Inclui zero das cervejarias.
     distingue_de: [producao_cerveja_litros]
+
+  - id: producao_industrial_geral_indice
+    unidade: indice
+    periodicidade: mensal
+    descricao: PIM-PF SIDRA 8888, indústria geral (Brasil).
+    distingue_de: [producao_bebidas_alcoolicas_indice]
 
   - id: ipca_cerveja
     unidade: indice
@@ -45,7 +51,7 @@ metrics:
   - id: apostadores
     unidade: pessoas
     periodicidade: irregular
-    descricao: Contagem de apostadores. No lake: amostra Klavi, não censo.
+    descricao: "Contagem de apostadores. No lake: amostra Klavi, não censo."
 
   - id: participacao_orcamento_apostas
     unidade: percentual
@@ -56,3 +62,8 @@ metrics:
     unidade: percentual
     periodicidade: irregular
     descricao: Percentual de apostadores que dizem ter tirado o dinheiro de uma categoria.
+
+  - id: empregos_setor_apostas
+    unidade: pessoas
+    periodicidade: irregular
+    descricao: Emprego no setor de apostas. IEPS (formais/RAIS) e IBJR/ANJL (diretos e indiretos) não são a mesma definição.

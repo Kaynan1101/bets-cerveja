@@ -1,4 +1,4 @@
-.PHONY: sources test lint dvc-push dvc-pull ingest extract
+.PHONY: sources test lint dvc-push dvc-pull ingest extract dbt-build
 
 sources:
 	uv run betscerveja sources validate
@@ -20,6 +20,11 @@ extract:
 	uv run betscerveja extract --source sidra_8888_pim_geral
 	uv run betscerveja extract --source sidra_7060_ipca
 	uv run betscerveja extract --source bcb_sgs_rendimento_real
+
+dbt-build:
+	uv run python scripts/export_dbt_seeds.py
+	uv run python -c "from pathlib import Path; Path('warehouse').mkdir(exist_ok=True)"
+	uv run dbt build --project-dir transform --profiles-dir transform
 
 dvc-push:
 	uv run python scripts/dvc_run.py push

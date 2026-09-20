@@ -444,7 +444,8 @@ sources:
     e_oficial: true
     tier_confiabilidade: A
     status_acervo: no_lake
-    api_path: /agregados/8888/periodos/all/variaveis/12606?localidades=N1[all]
+    api_path: /agregados/8888/periodos/all/variaveis/12606?localidades=N1[all]&classificacao=544[129314]
+    notas: 129314 = 1 Indústria geral. Sem essa classificação a API devolve '..' em todos os períodos.
 
   - id: sidra_7060_ipca
     titulo: IPCA por grupos e itens (cerveja e bebidas)

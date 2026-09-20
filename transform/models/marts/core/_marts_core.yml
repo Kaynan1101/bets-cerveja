@@ -1,0 +1,287 @@
+version: 2
+
+models:
+  - name: dim_data
+    description: Um dia. Spine 2002-01-01 a 2026-12-31.
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: data
+        data_type: date
+        data_tests: [unique, not_null]
+      - name: ano
+        data_type: integer
+      - name: mes
+        data_type: integer
+      - name: trimestre
+        data_type: integer
+      - name: dia_semana
+        data_type: integer
+      - name: data_inicio_mes
+        data_type: date
+      - name: data_inicio_ano
+        data_type: date
+
+  - name: dim_geografia
+    description: Unidade territorial. Brasil no mínimo.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [nivel, codigo]
+    columns:
+      - name: geografia_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: nivel
+        data_type: varchar
+        data_tests: [not_null]
+      - name: codigo
+        data_type: varchar
+        data_tests: [not_null]
+      - name: nome
+        data_type: varchar
+
+  - name: dim_fonte
+    description: Uma versão de fonte. vintage 0 = série API sem vintage.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+    columns:
+      - name: source_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: vintage_publicacao
+        data_type: integer
+        data_tests: [not_null]
+      - name: fonte_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: tier_confiabilidade
+        data_type: varchar
+      - name: e_oficial
+        data_type: boolean
+      - name: ano_referencia
+        data_type: integer
+      - name: titulo
+        data_type: varchar
+      - name: dominio
+        data_type: varchar
+      - name: status_acervo
+        data_type: varchar
+
+  - name: dim_metrica
+    description: Métrica canônica. Separa fluxo bruto, GGR e destinações.
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: metrica_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: unidade
+        data_type: varchar
+      - name: periodicidade
+        data_type: varchar
+      - name: descricao
+        data_type: varchar
+
+  - name: dim_segmento_produto
+    description: Teor × puro malte × estilo. Sem fato de mix como tendência.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [teor, puro_malte, estilo]
+    columns:
+      - name: segmento_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: teor
+        data_type: varchar
+        data_tests: [not_null]
+      - name: puro_malte
+        data_type: varchar
+        data_tests: [not_null]
+      - name: estilo
+        data_type: varchar
+        data_tests: [not_null]
+
+  - name: dim_categoria_despesa
+    description: Categoria de gasto doméstico (Locomotiva).
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: categoria_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: nome
+        data_type: varchar
+
+  - name: dim_recorte_demografico
+    description: Hash dos atributos classe/programa/amostra.
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: recorte_id
+        data_type: varchar
+        data_tests: [unique, not_null]
+      - name: classe
+        data_type: varchar
+      - name: programa
+        data_type: varchar
+      - name: amostra
+        data_type: varchar
+      - name: descricao
+        data_type: varchar
+
+  - name: fct_serie_mensal
+    description: Mês × métrica × geografia. 8885 11.1, 8888, IPCA cerveja, rendimento real.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [data_inicio, metrica_id, geografia_id]
+    columns:
+      - name: data_inicio
+        data_type: date
+        data_tests: [not_null]
+      - name: metrica_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: geografia_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: source_id
+        data_type: varchar
+      - name: vintage_publicacao
+        data_type: integer
+      - name: valor
+        data_type: double
+      - name: unidade
+        data_type: varchar
+      - name: granularidade_periodo
+        data_type: varchar
+
+  - name: fct_mercado_cerveja_anual
+    description: Ano de referência × vintage × UF (Brasil). Duas linhas para 2024.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [ano_referencia, vintage_publicacao, geografia_id]
+    columns:
+      - name: ano_referencia
+        data_type: integer
+        data_tests: [not_null]
+      - name: vintage_publicacao
+        data_type: integer
+        data_tests: [not_null]
+      - name: geografia_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: source_id
+        data_type: varchar
+      - name: metrica_id
+        data_type: varchar
+      - name: data_inicio
+        data_type: date
+      - name: valor
+        data_type: double
+      - name: unidade
+        data_type: varchar
+      - name: pagina
+        data_type: integer
+      - name: citacao_textual
+        data_type: varchar
+      - name: granularidade_periodo
+        data_type: varchar
+
+  - name: fct_indicador_declarado
+    description: Fonte × métrica × período × geografia × recorte. Sem fato oficial de apostas.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [source_id, metrica_id, data_inicio, geografia_id, recorte_id]
+    columns:
+      - name: source_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: vintage_publicacao
+        data_type: integer
+      - name: metrica_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: data_inicio
+        data_type: date
+        data_tests: [not_null]
+      - name: geografia_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: recorte_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: pagina
+        data_type: integer
+      - name: citacao_textual
+        data_type: varchar
+      - name: valor
+        data_type: double
+      - name: unidade
+        data_type: varchar
+      - name: granularidade_periodo
+        data_type: varchar
+
+  - name: fct_substituicao_declarada
+    description: Locomotiva p. 19 — eixo do projeto.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [source_id, categoria_id, recorte_id]
+    columns:
+      - name: source_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: vintage_publicacao
+        data_type: integer
+      - name: categoria_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: recorte_id
+        data_type: varchar
+        data_tests: [not_null]
+      - name: metrica_id
+        data_type: varchar
+      - name: geografia_id
+        data_type: varchar
+      - name: data_inicio
+        data_type: date
+      - name: valor
+        data_type: double
+      - name: unidade
+        data_type: varchar
+      - name: pagina
+        data_type: integer
+      - name: citacao_textual
+        data_type: varchar

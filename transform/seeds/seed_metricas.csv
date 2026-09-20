@@ -1,0 +1,13 @@
+metrica_id,unidade,periodicidade,descricao
+producao_cerveja_litros,litro,anual,Volume declarado de produção de cerveja (MAPA).
+producao_bebidas_alcoolicas_indice,indice,mensal,"PIM-PF SIDRA 8885, categoria 11.1 (129192). Inclui zero das cervejarias."
+producao_industrial_geral_indice,indice,mensal,"PIM-PF SIDRA 8888, indústria geral (Brasil)."
+ipca_cerveja,indice,mensal,Item cerveja no IPCA (SIDRA 7060).
+rendimento_real,brl_constante,mensal,Rendimento médio real. Código SGS a confirmar.
+fluxo_bruto_apostado,brl,mensal,Valor enviado a casas de apostas (Pix). Ordem de R$ 20 bi/mês no EE119.
+ggr,brl,mensal,"Gross Gaming Revenue. Sem fonte no lake; métrica reservada, não materializar."
+destinacoes_legais,brl,mensal,12% do GGR destinados por lei. Não é o tamanho do mercado.
+apostadores,pessoas,irregular,"Contagem de apostadores. No lake: amostra Klavi, não censo."
+participacao_orcamento_apostas,percentual,irregular,"Participação das apostas no orçamento familiar, por classe."
+substituicao_categoria_despesa,percentual,irregular,Percentual de apostadores que dizem ter tirado o dinheiro de uma categoria.
+empregos_setor_apostas,pessoas,irregular,Emprego no setor de apostas. IEPS (formais/RAIS) e IBJR/ANJL (diretos e indiretos) não são a mesma definição.

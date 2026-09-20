@@ -37,6 +37,6 @@ Ingest via `betscerveja ingest`; série tidy via `betscerveja extract` (schema `
 | id | Adapter | O que entra no Parquet |
 | --- | --- | --- |
 | `sidra_8885_pim_bebidas` | `api_sidra` | Índice PIM-PF, classificação 542, categorias 11.1 (`129192`) e 11.2 (`129193`) |
-| `sidra_8888_pim_geral` | `api_sidra` | PIM-PF geral (Brasil) |
+| `sidra_8888_pim_geral` | `api_sidra` | PIM-PF geral, classificação 544 categoria **1 Indústria geral** (`129314`) |
 | `sidra_7060_ipca` | `api_sidra` | IPCA variável 63; filtrar item cerveja (classificação 315) no dbt |
 | `bcb_sgs_rendimento_real` | `api_bcb` | SGS 24364; `periodo` = data do ponto; classificação nula |

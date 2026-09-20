@@ -1,0 +1,30 @@
+version: 2
+
+seeds:
+  - name: seed_metricas
+    description: Catálogo canônico a partir de conf/metrics.yml.
+    columns:
+      - name: metrica_id
+        data_tests:
+          - unique
+          - not_null
+  - name: seed_fontes
+    description: Catálogo de fontes a partir de conf/sources.yml. vintage 0 = série sem vintage (API).
+    data_tests:
+      - unique_combination:
+          arguments:
+            combination_of_columns: [source_id, vintage_publicacao]
+  - name: seed_citacoes
+    description: >
+      Indicadores esparsos citáveis (PDF/HTML) e fallback da produção MAPA
+      se o parse do extract falhar. Não é atalho para SIDRA/BCB.
+    columns:
+      - name: source_id
+        data_tests:
+          - not_null
+      - name: metrica_id
+        data_tests:
+          - not_null
+      - name: valor
+        data_tests:
+          - not_null
