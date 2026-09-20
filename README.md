@@ -31,6 +31,7 @@ O acervo original (PDFs e HTMLs) vive em `data/00_landing/`, versionado por DVC 
 | Arquivo | Para quê |
 | --- | --- |
 | [docs/etapas.md](docs/etapas.md) | Ordem das 10 etapas até o fim |
+| [docs/etapa_4.md](docs/etapa_4.md) | Briefing da etapa 4 (pedir build a um agente novo) |
 | [docs/architecture.md](docs/architecture.md) | Camadas e por que cada ferramenta está onde está |
 | [docs/grain.md](docs/grain.md) | Chave de cada tabela final — escrever **antes** de modelar |
 | [docs/fontes_lacunas.md](docs/fontes_lacunas.md) | Matriz afirmação → fonte. Afirmação sem fonte muda no papel |

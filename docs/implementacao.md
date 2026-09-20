@@ -12,6 +12,8 @@ Checklist operacional. Etapas numeradas: [etapas.md](etapas.md). Arquitetura: [a
 
 R2 já está. GitHub Secrets só na etapa 7. Zenodo só na etapa 10, se você quiser DOI.
 
+Briefing completo da etapa 4 (para um agente novo executar): [etapa_4.md](etapa_4.md).
+
 ## Verificações (antes de modelar no dbt — etapa 4)
 
 Não bloqueiam baixar a SIDRA nem extrair o Anuário:
