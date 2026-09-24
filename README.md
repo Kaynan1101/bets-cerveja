@@ -8,8 +8,6 @@ Pipeline de dados e análise sobre a composição do gasto discricionário no Br
 
 ![De onde saiu o dinheiro — 48% citam bares, restaurantes e delivery](exports/figures/ato2_substituicao.png)
 
-![Emprego em apostas — IEPS 1.144 vs IBJR 15.500 (duas definições, não uma série)](exports/figures/ato3_emprego.png)
-
 ## Limites causais (leia isto primeiro)
 
 Nenhuma fonte do acervo liga, de forma quantificada, redução de consumo de cerveja a aumento de gasto com apostas. A ponte empírica é o canal **bares, restaurantes e delivery** no survey da Locomotiva (48% dos apostadores das classes C/D/E dizem ter tirado o dinheiro daí). O projeto trata isso como ponte, não como evidência de substituição litro a litro.
